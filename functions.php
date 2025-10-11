@@ -76,9 +76,8 @@ function pagination($pages = '', $range = 4)
 if (function_exists('register_nav_menus')) {
 register_nav_menus( array(
 		'main' => __( 'Main Menu', '' ),
-		'footer_routes' => __( 'Footer Routes Menu', '' ),
-        'footer_offer' => __( 'Footer Offer Menu', '' ),
-        'footer_legal' => __( 'Footer Legaal Menu', '' ),
+		'footer' => __( 'Footer Menu', '' ),
+      
 	) );
 }
 
@@ -134,81 +133,11 @@ add_action('wp_enqueue_scripts', 'enqueue_ajax_contact_form_script');
 
 
 
-function enqueue_wishlist_script() {
-    if (is_singular('tours') || is_page_template('wishlist.php')) { 
-        // enqueue on single tour AND wishlist page
-        wp_enqueue_script(
-            'wishlist-script',
-            get_stylesheet_directory_uri() . '/assets/js/wishlist.js',
-            array('jquery'),
-            null,
-            true
-        );
-        wp_localize_script('wishlist-script', 'wpvars', array(
-            'ajax_url' => admin_url('admin-ajax.php')
-        ));
-    }
+
+
+// Modify WooCommerce wrappers if needed
+function mytheme_woocommerce_custom_wrappers() {
+    remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+    remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 }
-add_action('wp_enqueue_scripts', 'enqueue_wishlist_script');
-
-
-
-function get_tour_details_ajax() {
-    if (isset($_GET['tour_id'])) {
-        $tour_id = intval($_GET['tour_id']);
-        $tour = get_post($tour_id);
-
-        // ✅ Correct post type check
-        if ($tour && $tour->post_type === 'tours') {
-            wp_send_json(array(
-                'title'     => get_the_title($tour_id),
-                'permalink' => get_permalink($tour_id),
-                'thumbnail' => get_the_post_thumbnail_url($tour_id, 'thumbnail') // optional
-            ));
-        }
-    }
-    wp_send_json_error('Invalid tour ID');
-}
-add_action('wp_ajax_get_tour_details', 'get_tour_details_ajax');
-add_action('wp_ajax_nopriv_get_tour_details', 'get_tour_details_ajax');
-
-
-
-function get_tour_comments($post_id) {
-    $args = array(
-        'post_id' => $post_id,
-        'status'  => 'approve', // only approved comments
-        'order'   => 'DESC',    // newest first
-    );
-
-    $comments = get_comments($args);
-    $data = array();
-
-    foreach ($comments as $comment) {
-        $rating = get_comment_meta($comment->comment_ID, 'rating', true);
-
-        $data[] = array(
-            'comment_ID' => $comment->comment_ID,
-            'author'     => $comment->comment_author,
-            'content'    => $comment->comment_content,
-            'date'       => get_comment_date('', $comment),
-            'rating'     => $rating ? intval($rating) : null,
-        );
-    }
-
-    return $data;
-}
-
-
-// Hide admin bar for non-admins
-add_filter('show_admin_bar', function($show) {
-    return current_user_can('manage_options') ? $show : false;
-});
-
-
-
-add_filter('woocommerce_get_checkout_order_received_url', 'mufaqar_custom_thankyou_redirect', 10, 2);
-function mufaqar_custom_thankyou_redirect($order_received_url, $order) {
-    // Redirect after successful checkout
-    return home_url('/thank-you/?order_id=' . $order->get_id());
-}
+add_action('wp', 'mytheme_woocommerce_custom_wrappers');
