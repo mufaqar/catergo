@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-xl-6 col-lg-5 mt-5 mt-lg-0">
                                 <div class="chiken-image" data-animation="fadeInUp" data-delay="1.4s">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/chiken.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images//chiken.png"
                                         alt="chiken-img">
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
                             </div>
                             <div class="col-xl-6 col-lg-5  mt-lg-0">
                                 <div class="chiken-image" data-animation="fadeInUp" data-delay="1.4s">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/burger.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images//burger.png"
                                         alt="chiken-img">
                                 </div>
                             </div>

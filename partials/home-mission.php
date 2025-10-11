@@ -2,7 +2,7 @@
 <section class="food-comboo-section fix bg-cover section-padding"
     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-image/bg.jpg');">
     <div class="drinks-shape">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesdrinks.png" alt="shape-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/drinks.png" alt="shape-img">
     </div>
     <div class="container">
         <div class="comboo-wrapper">
@@ -69,7 +69,7 @@
                             <div class="comboo-image bg-cover"
                                 style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/banner/comboo-bg.jpg');">
                                 <div class="pizza-text">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagescombo-pizza-text.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/combo-pizza-text.png"
                                         alt="shape-img">
                                 </div>
                                 <div class="pizza-image">
@@ -81,7 +81,7 @@
                                         alt="shape-img">
                                 </div>
                                 <div class="vegetable-shape">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesvegetable.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/vegetable.png"
                                         alt="shape-img">
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                             <div class="comboo-image bg-cover"
                                 style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/banner/comboo-bg.jpg');">
                                 <div class="pizza-text">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagescombo-pizza-text.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/combo-pizza-text.png"
                                         alt="shape-img">
                                 </div>
                                 <div class="pizza-image">
@@ -102,7 +102,7 @@
                                         alt="shape-img">
                                 </div>
                                 <div class="vegetable-shape">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesvegetable.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/vegetable.png"
                                         alt="shape-img">
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                             <div class="comboo-image bg-cover"
                                 style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/banner/comboo-bg.jpg');">
                                 <div class="pizza-text">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagescombo-pizza-text.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/combo-pizza-text.png"
                                         alt="shape-img">
                                 </div>
                                 <div class="pizza-image">
@@ -123,7 +123,7 @@
                                         alt="shape-img">
                                 </div>
                                 <div class="vegetable-shape">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesvegetable.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/vegetable.png"
                                         alt="shape-img">
                                 </div>
                             </div>

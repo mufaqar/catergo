@@ -16,13 +16,13 @@
                 </span>
             </a>
             <div class="arrow-shape">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesarrow-shape.png" alt="shape-img">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-shape.png" alt="shape-img">
             </div>
             <div class="delivery-man">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/delivery-man.png" alt="img">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images//delivery-man.png" alt="img">
             </div>
             <div class="frame-shape">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesframe.png" alt="shape-img">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/frame.png" alt="shape-img">
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-lg-5 mt-5 mt-lg-0 wow fadeInUp" data-wow-delay=".4s">
                     <div class="booking-contact bg-cover"
-                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/imagesbooking-shape.png');">
+                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/booking-shape.png');">
                         <h4 class="text-center text-white">create an reservation</h4>
                         <div class="booking-items">
                             <div class="form-clt">

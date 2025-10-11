@@ -14,7 +14,7 @@ get_header(); ?>
                 <div class="booking-wrapper">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <div class="booking-contact mb-0 style-2 bg-cover" style="background-image: url('assets/imagesbooking-shape.png');">
+                            <div class="booking-contact mb-0 style-2 bg-cover" style="background-image: url('assets/images/booking-shape.png');">
                                 <h3 class="text-center mb-4 text-white wow fadeInUp">create an reservation</h3>
                                 <div class="booking-items">
                                     <div class="row g-4">
@@ -103,13 +103,13 @@ get_header(); ?>
          <!-- Testimonial Section Start -->
         <section class="testimonial-section fix section-padding">
             <div class="burger-shape">
-                <img src="assets/imagesburger-shape-3.png" alt="burger-shape">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/burger-shape-3.png" alt="burger-shape">
             </div>
             <div class="fry-shape">
-                <img src="assets/imagesfry-shape-2.png" alt="burger-shape">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fry-shape-2.png" alt="burger-shape">
             </div>
             <div class="pizza-shape">
-                <img src="assets/imagespizzashape.png" alt="burger-shape">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pizzashape.png" alt="burger-shape">
             </div>
             <div class="container">
                 <div class="testimonial-wrapper style-2">

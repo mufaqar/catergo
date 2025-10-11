@@ -3396,7 +3396,7 @@ input.main-search-input::placeholder {
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease-in-out;
-  background-image: url("../../assets/imagescatagory-card-shape.jpg");
+  background-image: url("../../assets/images/catagory-card-shape.jpg");
   border-radius: 14px;
   z-index: 9;
 }
@@ -3674,7 +3674,7 @@ input.main-search-input::placeholder {
 .catagory-product-card-2:hover::before {
   height: 100%;
   background-color: var(--theme3);
-  background-image: url(../../assets/imagescatagory-card-shape.jpg);
+  background-image: url(../../assets/images/catagory-card-shape.jpg);
 }
 .catagory-product-card-2:hover .catagory-product-content .catagory-button {
   opacity: 1;
@@ -3691,7 +3691,7 @@ input.main-search-input::placeholder {
 .catagory-product-card-2.active::before {
   height: 100%;
   background-color: var(--theme3);
-  background-image: url(../../assets/imagescatagory-card-shape.jpg);
+  background-image: url(../../assets/images/catagory-card-shape.jpg);
 }
 .catagory-product-card-2.active .icon {
   background-color: var(--white);
@@ -4505,7 +4505,7 @@ input.main-search-input::placeholder {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(../../assets/imagesoverlay-shape.png);
+    background-image: url(../../assets/images/overlay-shape.png);
     transition: all 0.3s ease-in-out;
   }
   .fooder-menu-wrapper .food-menu-items .food-menu-content h4, .fooder-menu-wrapper .food-menu-items .food-menu-content p, .fooder-menu-wrapper .food-menu-items .food-menu-content a {
@@ -4546,7 +4546,7 @@ input.main-search-input::placeholder {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(../../assets/imagesoverlay-shape.png);
+  background-image: url(../../assets/images/overlay-shape.png);
 }
 .fooder-menu-wrapper .food-menu-items:hover .food-menu-content h4, .fooder-menu-wrapper .food-menu-items:hover .food-menu-content p {
   color: var(--white);
@@ -4573,7 +4573,7 @@ input.main-search-input::placeholder {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(../../assets/imagesoverlay-shape.png);
+  background-image: url(../../assets/images/overlay-shape.png);
   transition: all 0.3s ease-in-out;
 }
 .fooder-menu-wrapper .food-menu-items.active .food-menu-content h4, .fooder-menu-wrapper .food-menu-items.active .food-menu-content p {
@@ -11387,7 +11387,7 @@ p.sticky-label {
   width: 100%;
   height: 100%;
   content: "";
-  background: url("../../assets/imagescatagory-card-shape.jpg");
+  background: url("../../assets/images/catagory-card-shape.jpg");
   opacity: 0;
   transition: all 0.4s ease-in-out;
   z-index: -1;

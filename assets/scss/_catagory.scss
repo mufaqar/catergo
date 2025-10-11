@@ -74,7 +74,7 @@
         visibility: hidden;
         opacity: 0;
         transition: all 0.3s ease-in-out;
-        background-image: url('../../assets/imagescatagory-card-shape.jpg');
+        background-image: url('../../assets/images/catagory-card-shape.jpg');
         border-radius: 14px;
         z-index: 9;
         
@@ -388,7 +388,7 @@
         &::before {
             height: calc(100%);
             background-color: $theme-color-3;
-            background-image: url(../../assets/imagescatagory-card-shape.jpg);
+            background-image: url(../../assets/images/catagory-card-shape.jpg);
         }
 
         .catagory-product-content {
@@ -416,7 +416,7 @@
         &::before {
             height: calc(100%);
             background-color: $theme-color-3;
-            background-image: url(../../assets/imagescatagory-card-shape.jpg);
+            background-image: url(../../assets/images/catagory-card-shape.jpg);
         }
 
         .icon {

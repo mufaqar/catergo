@@ -1,10 +1,10 @@
  <!-- Footer Section Start -->
  <footer class="footer-section fix section-bg">
      <div class="burger-shape">
-         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/burger-shape-3.png" alt="burger-shape">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/images//burger-shape-3.png" alt="burger-shape">
      </div>
      <div class="fry-shape">
-         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fry-shape-2.png" alt="burger-shape">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/images//fry-shape-2.png" alt="burger-shape">
      </div>
      <div class="container">
          <div class="footer-widgets-wrapper">
@@ -13,7 +13,7 @@
                      <div class="single-footer-widget">
                          <div class="widget-head">
                              <a href="<?php bloginfo('url'); ?>">
-                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo.svg"
+                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images//Logo.svg"
                                      width="170" height="43" alt="Catergo-Logo">
                              </a>
                          </div>
@@ -125,7 +125,7 @@
                      Reserved.
                  </p>
                  <div class="card-image wow fadeInRight" data-wow-delay=".5s">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/card-1.png" alt="card-img">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images//card-1.png" alt="card-img">
                  </div>
              </div>
          </div>
