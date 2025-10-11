@@ -1,9 +1,9 @@
-<section class="food-category-section fix section-padding section-bg">
+<section class="food-category-section fix section-padding section-bg" aria-label="Food Categories">
     <div class="tomato-shape">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tomato-shape.png" alt="shape-img">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/tomato-shape.png'); ?>" alt="Tomato shape">
     </div>
     <div class="burger-shape-2">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/burger-shape-2.png" alt="shape-img">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/burger-shape-2.png'); ?>" alt="Burger shape">
     </div>
     <div class="container">
         <div class="row">
@@ -20,27 +20,28 @@
                 </div>
             </div>
         </div>
-        <div class="swiper food-catagory-slider">
 
+        <div class="swiper food-catagory-slider">
             <div class="swiper-wrapper">
                 <?php
-                // Get terms from the product_cat taxonomy (WooCommerce categories)
                 $terms = get_terms(array(
-                    'taxonomy' => 'product_cat',
-                    'hide_empty' => true, // Changed to true to show only categories with products
-                    'orderby' => 'name',
-                    'order' => 'ASC',
-                    'parent' => 0, // Only show top-level categories
+                    'taxonomy'   => 'product_cat',
+                    'hide_empty' => true,
+                    'orderby'    => 'name',
+                    'order'      => 'ASC',
+                    'parent'     => 0,
                 ));
 
                 if (!empty($terms) && !is_wp_error($terms)) {
                     foreach ($terms as $term) {
-                        // Get term data
+                        $product_image = ''; // Initialize
                         $product_count = $term->count;
                         $category_name = $term->name;
-                        $category_description = $term->description;
                         
-                      // WooCommerce category thumbnail (custom size)
+                        // ACF field first
+                        $product_image = get_field('feature_image', $term->taxonomy . '_' . $term->term_id);
+
+                        // WooCommerce thumbnail (custom size)
                         if (!$product_image) {
                             $thumbnail_id = get_term_meta($term->term_id, 'thumbnail_id', true);
                             if ($thumbnail_id) {
@@ -53,44 +54,31 @@
                         if (!$product_image) {
                             $product_image = get_template_directory_uri() . '/assets/images/category.jpg';
                         }
-                                                
+
                         $term_link = get_term_link($term);
-                        
-                        // Skip if there's an error with the term link
-                        if (is_wp_error($term_link)) {
-                            continue;
-                        }
+                        if (is_wp_error($term_link)) continue;
                         ?>
-
-
-
-                <div class="swiper-slide">
-                    <div class="catagory-product-card bg-cover"
-                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/catagory-card-shape.jpg');">
-                        <div class="catagory-product-image text-center">
-                            <a href="<?php echo get_term_link($term); ?>">
-                                <img src="<?php echo esc_url($product_image); ?>"
-                                    alt="<?php echo esc_attr($category_name); ?>">
-
-                            </a>
+                        
+                        <div class="swiper-slide">
+                            <div class="catagory-product-card bg-cover"
+                                style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/images/catagory-card-shape.jpg'); ?>');">
+                                <div class="catagory-product-image text-center">
+                                    <a href="<?php echo esc_url($term_link); ?>">
+                                        <img src="<?php echo esc_url($product_image); ?>" alt="<?php echo esc_attr($category_name); ?>" loading="lazy">
+                                    </a>
+                                </div>
+                                <div class="catagory-product-content text-center">
+                                    <h3><a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($category_name); ?></a></h3>
+                                    <p><?php printf(_n('%d product', '%d products', $product_count, 'text-domain'), $product_count); ?></p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="catagory-product-content text-center">
-                            <h3>
-                                <a href="<?php echo esc_url($term_link); ?>">
-                                    <?php echo esc_html($category_name); ?>
-                                </a>
-                            </h3>
-                            <p><?php echo $product_count; ?> products</p>
-                        </div>
-                    </div>
-                </div>
-                <?php
-        }
-    } else {
-        // Fallback if no terms found
-        echo '<p>No food categories found.</p>';
-    }
-    ?>
+                        <?php
+                    }
+                } else {
+                    echo '<p>No food categories found.</p>';
+                }
+                ?>
             </div>
         </div>
     </div>
