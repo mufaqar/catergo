@@ -23,30 +23,44 @@
         <div class="swiper food-catagory-slider">
 
             <div class="swiper-wrapper">
-                <?php
-    // Get terms from the food_types taxonomy
-    $terms = get_terms(array(
-        'taxonomy' => 'food_types',
-        'hide_empty' => false,
-    ));
+                 <?php
+                // Get terms from the product_cat taxonomy (WooCommerce categories)
+                $terms = get_terms(array(
+                    'taxonomy' => 'product_cat',
+                    'hide_empty' => true, // Changed to true to show only categories with products
+                    'orderby' => 'name',
+                    'order' => 'ASC',
+                    'parent' => 0, // Only show top-level categories
+                ));
 
-    if (!empty($terms) && !is_wp_error($terms)) {
-        foreach ($terms as $term) {
-
-          
-            
-            // Get term meta or use defaults
-            $product_count = $term->count;
-            $category_name = $term->name;
-            $category_slug = $term->slug;
-
-            $termid = $term->term_id;
-            $product_image = get_field('feature_image', $term->taxonomy . '_' . $term->term_id);
-
-            
-
-?>
-
+                if (!empty($terms) && !is_wp_error($terms)) {
+                    foreach ($terms as $term) {
+                        // Get term data
+                        $product_count = $term->count;
+                        $category_name = $term->name;
+                        $category_description = $term->description;
+                        
+                        // Get ACF field for feature image
+                        $product_image = get_field('feature_image', $term->taxonomy . '_' . $term->term_id);
+                        
+                        // Fallback image if ACF field is empty
+                        $thumbnail_id = get_term_meta($term->term_id, 'category_thumbnail', true);
+                        if (!$product_image && $thumbnail_id) {
+                            $product_image = wp_get_attachment_url($thumbnail_id);
+                        }
+                        
+                        // Final fallback to default image
+                        if (!$product_image) {
+                            $product_image = get_template_directory_uri() . '/assets/images/default-category.jpg';
+                        }
+                        
+                        $term_link = get_term_link($term);
+                        
+                        // Skip if there's an error with the term link
+                        if (is_wp_error($term_link)) {
+                            continue;
+                        }
+                        ?>
 
 
 
@@ -57,7 +71,7 @@
                         <div class="catagory-product-image text-center">
                             <a href="<?php echo get_term_link($term); ?>">
                                 <img src="<?php echo esc_url($product_image); ?>"
-                                    alt="<?php echo esc_attr($category_name); ?>" width="100%" height="auto">
+                                    alt="<?php echo esc_attr($category_name); ?>" width="250px" height="250px">
                                 <div class="decor-leaf">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/decor-leaf.svg"
                                         alt="shape-img">

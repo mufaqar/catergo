@@ -2,7 +2,7 @@
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 140, 140, true );
 	add_image_size( 'single-post-thumbnail', 300, 9999 );
-    add_image_size( 'tour-thumbnail', 300, 200, true );
+    add_image_size( 'category_thumbnail', 250, 250, true );
     add_image_size('tour_slide', 1350, 500, true); // true = hard crop
 
     add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
