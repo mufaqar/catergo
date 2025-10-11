@@ -72,7 +72,7 @@
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <div class="comboo-image bg-cover"
-                                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/banner/comboo-bg.jpg');">
+                                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner/comboo-bg.jpg');">
                                 <div class="pizza-text">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/combo-pizza-text.png"
                                         alt="shape-img">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                             <div class="comboo-image bg-cover"
-                                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/banner/comboo-bg.jpg');">
+                                style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner/comboo-bg.jpg');">
                                 <div class="pizza-text">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/combo-pizza-text.png"
                                         alt="shape-img">

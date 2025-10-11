@@ -1,7 +1,7 @@
 <section class="main-cta-banner section-padding pt-0">
     <div class="container">
         <div class="main-cta-banner-wrapper bg-cover mt-10"
-            style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/banner/main-cta-bg.jpg');">
+            style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner/main-cta-bg.jpg');">
             <div class="section-title">
                 <span class="theme-color-3 wow fadeInUp">crispy, every bite taste</span>
                 <h2 class="text-white wow fadeInUp" data-wow-delay=".3s">
@@ -25,7 +25,7 @@
 </section>
 
 <section class="booking-section fix section-padding bg-cover"
-    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/banner/main-bg.jpg');">
+    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner/main-bg.jpg');">
     <div class="container">
         <div class="booking-wrapper style-responsive section-padding pb-0">
             <div class="row justify-content-between align-items-center">

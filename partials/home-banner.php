@@ -1,5 +1,5 @@
 <section class="grilled-banner fix section-padding bg-cover"
-    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/banner/main-bg.jpg');">
+    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner/main-bg.jpg');">
     <div class="patato-shape">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/patato-shape.png" alt="shape-img">
     </div>
