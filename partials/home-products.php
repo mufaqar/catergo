@@ -45,7 +45,7 @@
                                 <?php if ($image_url) : ?>
                                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                 <?php else : ?>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/placeholder.jpg" alt="No image available">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/placeholder.jpg" alt="No image available">
                                 <?php endif; ?>
                             </div>
                             <div class="catagory-product-content">

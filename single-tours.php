@@ -1,5 +1,5 @@
 <?php get_header();
-$bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
+$bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/images/bg-img/97.jpg';
 $tour_comments = get_tour_comments(get_the_ID());
 $review_count = count($tour_comments);
 $tour_overview = get_post_meta($post->ID, "tour_overview", true);

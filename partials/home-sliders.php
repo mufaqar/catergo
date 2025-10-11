@@ -3,25 +3,25 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="hero-1 bg-cover"
-                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/hero/hero-bg.jpg');">
+                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero/hero-bg.jpg');">
                     <div class="chilii-shape" data-animation="fadeInUp" data-delay="2.1s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/chilli-shape.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/chilli-shape.png"
                             alt="shape-img">
                     </div>
                     <div class="fire-shape" data-animation="fadeInUp" data-delay="2.4s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/fire-shape.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/fire-shape.png"
                             alt="shape-img">
                     </div>
                     <div class="chilii-shape-2" data-animation="fadeInUp" data-delay="2.7s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/chilli-shape-2.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/chilli-shape-2.png"
                             alt="shape-img">
                     </div>
                     <div class="chilii-shape-3" data-animation="fadeInUp" data-delay="3s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/chilli-shape-3.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/chilli-shape-3.png"
                             alt="shape-img">
                     </div>
                     <div class="offer-shape" data-animation="fadeInUp" data-delay="2.1s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/offer-shape.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/offer-shape.png"
                             alt="shape-img">
                     </div>
                     <h2 class="hero-back-title" data-animation="fadeInRight" data-delay="2.5s">fast food</h2>
@@ -61,25 +61,25 @@
             </div>
             <div class="swiper-slide">
                 <div class="hero-1 bg-cover"
-                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/hero/hero-bg.jpg');">
+                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero/hero-bg.jpg');">
                     <div class="chilii-shape" data-animation="fadeInUp" data-delay="2.1s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/chilli-shape.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/chilli-shape.png"
                             alt="shape-img">
                     </div>
                     <div class="fire-shape" data-animation="fadeInUp" data-delay="2.4s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/fire-shape.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/fire-shape.png"
                             alt="shape-img">
                     </div>
                     <div class="chilii-shape-2" data-animation="fadeInUp" data-delay="2.7s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/chilli-shape-2.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/chilli-shape-2.png"
                             alt="shape-img">
                     </div>
                     <div class="chilii-shape-3" data-animation="fadeInUp" data-delay="3s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/chilli-shape-3.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/chilli-shape-3.png"
                             alt="shape-img">
                     </div>
                     <div class="offer-shape" data-animation="fadeInUp" data-delay="2.1s">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/offer-shape.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero/offer-shape.png"
                             alt="shape-img">
                     </div>
                     <h2 class="hero-back-title" data-animation="fadeInRight" data-delay="2.5s">fast food</h2>

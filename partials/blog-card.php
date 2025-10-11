@@ -6,7 +6,7 @@
             <?php if ( has_post_thumbnail() ) {
 						the_post_thumbnail('blog');
 					} else { ?>
-            <img src="<?php bloginfo('template_directory'); ?>/assets/img/bg-img/1.jpg" alt="Featured Thumbnail" />
+            <img src="<?php bloginfo('template_directory'); ?>/assets/images/bg-img/1.jpg" alt="Featured Thumbnail" />
             <?php } ?>
         </div>
 

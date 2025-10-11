@@ -3,7 +3,7 @@
 
 get_header(); ?>
 
-<?php $bg_image = get_template_directory_uri() . '/assets/img/default.webp';
+<?php $bg_image = get_template_directory_uri() . '/assets/images/banner.webp';
         get_template_part('partials/content', 'breadcrumb', [
             'bg' => $bg_image
         ]); ?>
@@ -182,17 +182,17 @@ get_header(); ?>
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <div class="client-image-item">
-                                        <div class="client-img bg-cover" style="background-image: url('assets/img/client/01.jpg')"></div>
+                                        <div class="client-img bg-cover" style="background-image: url('assets/images/client/01.jpg')"></div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="client-image-item">
-                                        <div class="client-img bg-cover" style="background-image: url('assets/img/client/02.jpg')"></div>
+                                        <div class="client-img bg-cover" style="background-image: url('assets/images/client/02.jpg')"></div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="client-image-item">
-                                        <div class="client-img bg-cover" style="background-image: url('assets/img/client/03.jpg')"></div>
+                                        <div class="client-img bg-cover" style="background-image: url('assets/images/client/03.jpg')"></div>
                                     </div>
                                 </div>
                             </div>

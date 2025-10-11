@@ -97,7 +97,7 @@
                     <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                         <div class="offcanvas__logo">
                             <a href="index.html">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo/logo.svg"
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo.svg"
                                     alt="logo-img">
                             </a>
                         </div>
@@ -113,30 +113,30 @@
                     </p>
                     <div class="offcanvas-gallery-area d-none d-lg-block">
                         <div class="offcanvas-gallery-items">
-                            <a href="assets/img/header/01.jpg" class="offcanvas-image img-popup">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/header/01.jpg"
+                            <a href="assets/images/header/01.jpg" class="offcanvas-image img-popup">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/header/01.jpg"
                                     alt="gallery-img">
                             </a>
-                            <a href="assets/img/header/02.jpg" class="offcanvas-image img-popup">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/header/02.jpg"
+                            <a href="assets/images/header/02.jpg" class="offcanvas-image img-popup">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/header/02.jpg"
                                     alt="gallery-img">
                             </a>
-                            <a href="assets/img/header/03.jpg" class="offcanvas-image img-popup">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/header/03.jpg"
+                            <a href="assets/images/header/03.jpg" class="offcanvas-image img-popup">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/header/03.jpg"
                                     alt="gallery-img">
                             </a>
                         </div>
                         <div class="offcanvas-gallery-items">
-                            <a href="assets/img/header/04.jpg" class="offcanvas-image img-popup">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/header/04.jpg"
+                            <a href="assets/images/header/04.jpg" class="offcanvas-image img-popup">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/header/04.jpg"
                                     alt="gallery-img">
                             </a>
-                            <a href="assets/img/header/05.jpg" class="offcanvas-image img-popup">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/header/05.jpg"
+                            <a href="assets/images/header/05.jpg" class="offcanvas-image img-popup">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/header/05.jpg"
                                     alt="gallery-img">
                             </a>
-                            <a href="assets/img/header/06.jpg" class="offcanvas-image img-popup">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/header/06.jpg"
+                            <a href="assets/images/header/06.jpg" class="offcanvas-image img-popup">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/header/06.jpg"
                                     alt="gallery-img">
                             </a>
                         </div>
@@ -257,7 +257,7 @@
                                 <div class="cart-box">
                                     <ul>
                                         <li>
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shop-food/s2.png"
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/shop-food/s2.png"
                                                 alt="image">
                                             <div class="cart-product">
                                                 <a href="#0">grilled chiken</a>
@@ -267,7 +267,7 @@
                                     </ul>
                                     <ul>
                                         <li class="border-none">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shop-food/s3.png"
+                                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/shop-food/s3.png"
                                                 alt="image">
                                             <div class="cart-product">
                                                 <a href="#0">grilled chiken</a>

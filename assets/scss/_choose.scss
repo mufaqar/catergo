@@ -183,7 +183,7 @@
         width: 80%;
         height: 1px;
         content: "";
-        background-image: url(../../assets/img/border.png);
+        background-image: url(../../assets/images/border.png);
 
         @include breakpoint (max-xxl){
             display: none;

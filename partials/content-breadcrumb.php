@@ -1,5 +1,5 @@
 <?php
-$bg = isset($args['bg']) ? esc_url($args['bg']) : get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
+$bg = isset($args['bg']) ? esc_url($args['bg']) : get_template_directory_uri() . '/assets/images/banner.webp';
 ?>
 
 

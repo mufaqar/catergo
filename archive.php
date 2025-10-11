@@ -5,7 +5,7 @@
  */
 get_header();
 
-$bg_image = get_theme_mod('category_archive_bg_image') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
+$bg_image = get_theme_mod('category_archive_bg_image') ?: get_template_directory_uri() . '/assets/images/bg-img/97.jpg';
 
 get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image,
@@ -27,7 +27,7 @@ get_template_part('partials/content', 'breadcrumb', [
                                 <?php if (has_post_thumbnail()) : ?>
                                     <img class="rounded-4" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php the_title_attribute(); ?>">
                                 <?php else : ?>
-                                    <img class="rounded-4" src="<?php echo get_template_directory_uri(); ?>/assets/img/bg-img/127.jpg" alt="Default Image">
+                                    <img class="rounded-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-img/127.jpg" alt="Default Image">
                                 <?php endif; ?>
                             </div>
 

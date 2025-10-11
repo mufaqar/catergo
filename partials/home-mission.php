@@ -1,6 +1,6 @@
 <!-- Food Comboo Section Start -->
 <section class="food-comboo-section fix bg-cover section-padding"
-    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/bg-image/bg.jpg');">
+    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-image/bg.jpg');">
     <div class="drinks-shape">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/drinks.png" alt="shape-img">
     </div>
@@ -25,7 +25,7 @@
                                 aria-controls="nav-home" aria-selected="true">
                                 <span class="food-comboo-list">
                                     <span class="offer-image">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/offer/chicken.png"
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/offer/chicken.png"
                                             alt="img">
                                     </span>
                                     <span class="comboo-title">
@@ -38,7 +38,7 @@
                                 aria-controls="nav-profile" aria-selected="false">
                                 <span class="food-comboo-list">
                                     <span class="offer-image">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/offer/pizza.png"
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/offer/pizza.png"
                                             alt="img">
                                     </span>
                                     <span class="comboo-title">
@@ -61,7 +61,7 @@
                                     Vi på Catergo har mångårig erfarenhet inom catering och matservering. Vi skulle vilja föra vår erfarenhet till våra kunder och erbjuda dem ett smidigt utförande av catering med känsla för detaljer.
                                 </div>
                                 <div class="offer-shape">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/offer/50percent-off-2.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/offer/50percent-off-2.png"
                                         alt="shape-img">
                                 </div>
                                 <div class="vegetable-shape">
@@ -78,11 +78,11 @@
                                         alt="shape-img">
                                 </div>
                                 <div class="pizza-image">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/food/big-pizza.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/food/big-pizza.png"
                                         alt="food-img">
                                 </div>
                                 <div class="offer-shape">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/offer/50percent-off-2.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/offer/50percent-off-2.png"
                                         alt="shape-img">
                                 </div>
                                 <div class="vegetable-shape">
@@ -99,11 +99,11 @@
                                         alt="shape-img">
                                 </div>
                                 <div class="pizza-image">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/food/big-pizza.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/food/big-pizza.png"
                                         alt="food-img">
                                 </div>
                                 <div class="offer-shape">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/offer/50percent-off-2.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/offer/50percent-off-2.png"
                                         alt="shape-img">
                                 </div>
                                 <div class="vegetable-shape">

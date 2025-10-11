@@ -1,6 +1,6 @@
 <?php get_header();
 
-$bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/img/bg-img/97.jpg';
+$bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/images/bg-img/97.jpg';
 
 get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image
@@ -15,7 +15,7 @@ get_template_part('partials/content', 'breadcrumb', [
         <div class="row g-5 g-md-4 g-xxl-5">
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				<div class="col-12">
-					<img class="rounded-4" src="assets/img/bg-img/127.jpg" alt="">
+					<img class="rounded-4" src="assets/images/bg-img/127.jpg" alt="">
 				</div>				
 				<div class="col-12 col-md-7 col-lg-8">
 					<div class="pe-lg-3">

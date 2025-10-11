@@ -4,7 +4,7 @@
 get_header(); ?>
 
 
-<?php $bg_image = get_template_directory_uri() . '/assets/img/default.webp';
+<?php $bg_image = get_template_directory_uri() . '/assets/images/banner.webp';
         get_template_part('partials/content', 'breadcrumb', [
             'bg' => $bg_image
         ]); ?>
@@ -17,7 +17,7 @@ get_header(); ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                 <div class="contact-info-items text-center">
                     <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/location.svg" alt="icon-img">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon/location.svg" alt="icon-img">
                     </div>
                     <div class="content">
                         <h3>address line</h3>
@@ -31,7 +31,7 @@ get_header(); ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".5s">
                 <div class="contact-info-items active text-center">
                     <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/phone.svg" alt="icon-img">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon/phone.svg" alt="icon-img">
                     </div>
                     <div class="content">
                         <h3>Phone Number</h3>
@@ -45,7 +45,7 @@ get_header(); ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".7s">
                 <div class="contact-info-items text-center">
                     <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/email.svg" alt="icon-img">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon/email.svg" alt="icon-img">
                     </div>
                     <div class="content">
                         <h3>Mail Adress</h3>
