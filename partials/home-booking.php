@@ -15,15 +15,11 @@
                     <span class="button-text">order now</span>
                 </span>
             </a>
-            <div class="arrow-shape">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-shape.png" alt="shape-img">
-            </div>
+
             <div class="delivery-man">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images//delivery-man.png" alt="img">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/delivery-man.png" alt="img">
             </div>
-            <div class="frame-shape">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/frame.png" alt="shape-img">
-            </div>
+
         </div>
     </div>
 </section>
@@ -48,7 +44,7 @@
                             </div>
                             <div class="content">
                                 <h5>24/7 Support center</h5>
-                                <h3><a href="tel:+1718-904-4450">+1718-904-4450</a></h3>
+                                <h3><a href="tel:+0864024400">08-640 244 00</a></h3>
                             </div>
                         </div>
                     </div>

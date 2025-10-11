@@ -11269,7 +11269,7 @@ p.sticky-label {
 }
 .booking-content .icon-items .icon {
   font-size: 66px;
-  color: var(--theme);
+  color: var(--white);
 }
 @media (max-width: 575px) {
   .booking-content .icon-items .icon {
@@ -11281,7 +11281,7 @@ p.sticky-label {
   margin-bottom: 5px;
 }
 .booking-content .icon-items .content h3 a {
-  color: var(--theme);
+  color: var(--white);
 }
 .booking-content.style-2 .section-title span {
   color: var(--theme);
