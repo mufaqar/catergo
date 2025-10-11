@@ -1,9 +1,9 @@
 <section class="food-category-section fix section-padding section-bg">
     <div class="tomato-shape">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/tomato-shape.png" alt="shape-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/imagestomato-shape.png" alt="shape-img">
     </div>
     <div class="burger-shape-2">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/burger-shape-2.png" alt="shape-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesburger-shape-2.png" alt="shape-img">
     </div>
     <div class="container">
         <div class="row">
@@ -52,22 +52,22 @@
 
                 <div class="swiper-slide">
                     <div class="catagory-product-card bg-cover"
-                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/shape/catagory-card-shape.jpg');">
+                        style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/imagescatagory-card-shape.jpg');">
                         <h5><?php echo $product_count; ?> products</h5>
                         <div class="catagory-product-image text-center">
                             <a href="<?php echo get_term_link($term); ?>">
                                 <img src="<?php echo esc_url($product_image); ?>"
                                     alt="<?php echo esc_attr($category_name); ?>" width="100%" height="auto">
                                 <div class="decor-leaf">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/decor-leaf.svg"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesdecor-leaf.svg"
                                         alt="shape-img">
                                 </div>
                                 <div class="decor-leaf-2">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/decor-leaf-2.svg"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesdecor-leaf-2.svg"
                                         alt="shape-img">
                                 </div>
                                 <div class="burger-shape">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/burger-shape.png"
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/imagesburger-shape.png"
                                         alt="shape-img">
                                 </div>
                             </a>

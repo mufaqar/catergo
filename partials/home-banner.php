@@ -4,13 +4,13 @@
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/patato-shape.png" alt="shape-img">
     </div>
     <div class="offer-shape float-bob-y">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/offer/50percent-off-2.png" alt="shape-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/50percent-off-2.png" alt="shape-img">
     </div>
     <div class="text-shape">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/pizza-text-2.png" alt="shape-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pizza-text-2.png" alt="shape-img">
     </div>
     <div class="spicy-shape">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/spicy.png" alt="shape-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/spicy.png" alt="shape-img">
     </div>
     <div class="tomato-shape">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tomato-shape-2.png" alt="shape-img">
