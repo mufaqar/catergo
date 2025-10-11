@@ -23,7 +23,7 @@
         <div class="swiper food-catagory-slider">
 
             <div class="swiper-wrapper">
-                 <?php
+                <?php
                 // Get terms from the product_cat taxonomy (WooCommerce categories)
                 $terms = get_terms(array(
                     'taxonomy' => 'product_cat',
@@ -71,7 +71,7 @@
                         <div class="catagory-product-image text-center">
                             <a href="<?php echo get_term_link($term); ?>">
                                 <img src="<?php echo esc_url($product_image); ?>"
-                                    alt="<?php echo esc_attr($category_name); ?>" width="250px" height="250px">
+                                    alt="<?php echo esc_attr($category_name); ?>">
                                 <div class="decor-leaf">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/decor-leaf.svg"
                                         alt="shape-img">
