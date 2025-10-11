@@ -1,10 +1,10 @@
  <!-- Footer Section Start -->
  <footer class="footer-section fix section-bg">
      <div class="burger-shape">
-         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/burger-shape-3.png" alt="burger-shape">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/burger-shape-3.png" alt="burger-shape">
      </div>
      <div class="fry-shape">
-         <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/fry-shape-2.png" alt="burger-shape">
+         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fry-shape-2.png" alt="burger-shape">
      </div>
      <div class="container">
          <div class="footer-widgets-wrapper">
@@ -26,9 +26,8 @@
                              <a href="mailto: info@catergo.se" class="link"> info@catergo.se</a>
                              <div class="social-icon d-flex align-items-center">
                                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                 <a href="#"><i class="fab fa-twitter"></i></a>
-                                 <a href="#"><i class="fab fa-vimeo-v"></i></a>
-                                 <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                 <a href="#"><i class="fab fa-instagram"></i></a>
+                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                              </div>
                          </div>
                      </div>
@@ -90,8 +89,8 @@
                          </div>
                          <div class="footer-address-text">
                              <h6>
-                                 570 8th Ave, New York,NY <span>10018</span>
-                                 United States
+                               	Ljungaverk, Southern Norrland <span>	840 10</span>
+                                 	Sweden
                              </h6>
                              <h5>Hours:</h5>
                              <h6>
@@ -122,11 +121,11 @@
          <div class="container">
              <div class="footer-bottom-wrapper d-flex align-items-center justify-content-between">
                  <p class="wow fadeInLeft" data-wow-delay=".3s">
-                     © Copyright <span class="theme-color-3">2024</span> <a href="index.html">Foodking </a>. All Rights
+                     © Copyright <span class="theme-color-3">2025</span> <a href="https://mufaqar.com">Catergo </a>. All Rights
                      Reserved.
                  </p>
                  <div class="card-image wow fadeInRight" data-wow-delay=".5s">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/card.png" alt="card-img">
+                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/card-1.png" alt="card-img">
                  </div>
              </div>
          </div>

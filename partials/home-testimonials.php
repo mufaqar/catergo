@@ -1,13 +1,13 @@
 <!-- Testimonial Section Start -->
 <section class="testimonial-section fix section-padding section-bg">
     <div class="burger-shape">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/burger-shape-3.png" alt="burger-shape">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/burger-shape-3.png" alt="burger-shape">
     </div>
     <div class="fry-shape">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/fry-shape-2.png" alt="burger-shape">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fry-shape-2.png" alt="burger-shape">
     </div>
     <div class="pizza-shape">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/shape/pizzashape.png" alt="burger-shape">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pizzashape.png" alt="burger-shape">
     </div>
     <div class="container">
         <div class="testimonial-wrapper style-responsive">
@@ -81,21 +81,21 @@
                         <div class="swiper-slide">
                             <div class="client-image-item">
                                 <div class="client-img bg-cover"
-                                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/client/01.jpg')">
+                                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/01-1.jpg')">
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="client-image-item">
                                 <div class="client-img bg-cover"
-                                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/client/02.jpg')">
+                                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/02-1.jpg')">
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="client-image-item">
                                 <div class="client-img bg-cover"
-                                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/client/03.jpg')">
+                                    style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/03-1.jpg')">
                                 </div>
                             </div>
                         </div>

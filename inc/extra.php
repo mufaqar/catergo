@@ -1,7 +1,7 @@
 <?php
 
     include_once('ajax_calls.php');
-     include_once('driver.php');
+
     function handle_contact_form() {
         check_ajax_referer('ajax-contact-nonce', 'security');
 
