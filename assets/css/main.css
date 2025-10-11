@@ -1503,7 +1503,7 @@ input.main-search-input::placeholder {
 .header-main .header-right .menu-cart .cart-icon {
   position: relative;
 }
-.header-main .header-right .menu-cart .cart-icon::before {
+.header-main .header-right .menu-cart .cart-icon .cart-count {
   position: absolute;
   top: -7px;
   right: -8px;
