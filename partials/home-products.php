@@ -4,69 +4,84 @@
             <span class="wow fadeInUp">crispy, every bite taste</span>
             <h2 class="wow fadeInUp" data-wow-delay=".3s">Popular Food Items</h2>
         </div>
+
         <div class="row">
             <?php
-            // WP Query for catering post type
-            $catering_args = array(
-                'post_type' => 'catering',
-                'posts_per_page' => 8, // Adjust as needed
-                'status' => 'publish'
-            );
-            
-            $catering_query = new WP_Query($catering_args);
-            $delay_classes = array('.3s', '.5s', '.7s', '.8s', '.3s', '.5s', '.7s', '.8s');
+            // WooCommerce Product Query
+            $args = [
+                'post_type'      => 'product',
+                'posts_per_page' => 8,
+                'post_status'    => 'publish',
+                'meta_query'     => [
+                    [
+                        'key'     => '_stock_status',
+                        'value'   => 'instock',
+                        'compare' => '='
+                    ]
+                ]
+            ];
+
+            $products = new WP_Query($args);
+            $delay_classes = ['.3s', '.5s', '.7s', '.8s', '.3s', '.5s', '.7s', '.8s'];
             $delay_index = 0;
-            
-            if ($catering_query->have_posts()) :
-                while ($catering_query->have_posts()) : $catering_query->the_post();
-                    $post_id = get_the_ID();
-                    
-                    // Get ACF fields or fallback to default values
-                    $regular_price = get_field('regular_price', $post_id) ?: '30.52';
-                    $sale_price = get_field('sale_price', $post_id) ?: '28.52';
-                    $discount_percent = 0;                
-                    $rating = get_field('rating', $post_id) ?: 4;                   
-                  
-                    // Fallback to post thumbnail
-                    $image_url = get_the_post_thumbnail_url($post_id, 'medium');
+
+            if ($products->have_posts()) :
+                while ($products->have_posts()) : $products->the_post();
+                    $product = wc_get_product(get_the_ID());
+                    $regular_price = $product->get_regular_price();
+                    $sale_price    = $product->get_sale_price();
+                    $price_html    = $product->get_price_html();
+                    $discount_percent = 0;
+
+                    if ($regular_price && $sale_price && $regular_price > $sale_price) {
+                        $discount_percent = round((($regular_price - $sale_price) / $regular_price) * 100);
+                    }
+
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: wc_placeholder_img_src();
                     $image_alt = get_the_title();
-                  
-                    
-                    // Calculate active class for specific post (you can modify this logic)
-                    $active_class = ($catering_query->current_post == 1) ? 'active' : '';
                     ?>
                     
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="<?php echo $delay_classes[$delay_index]; ?>">
-                        <div class="catagory-product-card-2 text-center <?php echo $active_class; ?>">
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="<?php echo esc_attr($delay_classes[$delay_index]); ?>">
+                        <div class="catagory-product-card-2 text-center">
                             <div class="icon">
-                                <a href="#"><i class="far fa-heart"></i></a>
+                                <?php
+                                // Wishlist (if plugin available)
+                                if (function_exists('YITH_WCWL')) {
+                                    echo do_shortcode('[yith_wcwl_add_to_wishlist product_id="' . get_the_ID() . '"]');
+                                } else {
+                                    echo '<a href="#"><i class="far fa-heart"></i></a>';
+                                }
+                                ?>
                             </div>
+
                             <div class="catagory-product-image">
-                                <?php if ($image_url) : ?>
+                                <a href="<?php the_permalink(); ?>">
                                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                                <?php else : ?>
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/placeholder.jpg" alt="No image available">
+                                </a>
+                                <?php if ($product->is_on_sale()) : ?>
+                                    <span class="onsale">-<?php echo esc_html($discount_percent); ?>%</span>
                                 <?php endif; ?>
                             </div>
+
                             <div class="catagory-product-content">
                                 <div class="catagory-button">
-                                    <a href="#" class="theme-btn-2">
-                                        <i class="far fa-shopping-basket"></i>Add To Cart
-                                    </a>
+                                    <?php woocommerce_template_loop_add_to_cart(); ?>
                                 </div>
+
                                 <div class="info-price d-flex align-items-center justify-content-center">
-                                    <p>-<?php echo esc_html($discount_percent); ?>%</p>
-                                    <h6>$<?php echo esc_html($regular_price); ?></h6>
-                                    <span>$<?php echo esc_html($sale_price); ?></span>
+                                    <?php if ($discount_percent > 0) : ?>
+                                        <p>-<?php echo esc_html($discount_percent); ?>%</p>
+                                    <?php endif; ?>
+                                    <h6><?php echo $price_html; ?></h6>
                                 </div>
+
                                 <h4>
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
-                               
                             </div>
                         </div>
                     </div>
-                    
+
                     <?php
                     $delay_index++;
                     if ($delay_index >= count($delay_classes)) {
@@ -77,15 +92,16 @@
             else :
                 ?>
                 <div class="col-12 text-center">
-                    <p>No catering items found.</p>
+                    <p>No products found.</p>
                 </div>
             <?php endif; ?>
         </div>
+
         <div class="catagory-button text-center pt-4 wow fadeInUp" data-wow-delay=".3s">
-            <a href="<?php echo esc_url(home_url('/shop')); ?>" class="theme-btn">
+            <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="theme-btn">
                 <span class="button-content-wrapper d-flex align-items-center">
                     <span class="button-icon"><i class="flaticon-delivery"></i></span>
-                    <span class="button-text">view more</span>
+                    <span class="button-text">View More</span>
                 </span>
             </a>
         </div>
