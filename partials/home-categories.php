@@ -72,25 +72,14 @@
                             <a href="<?php echo get_term_link($term); ?>">
                                 <img src="<?php echo esc_url($product_image); ?>"
                                     alt="<?php echo esc_attr($category_name); ?>">
-                                <div class="decor-leaf">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/decor-leaf.svg"
-                                        alt="shape-img">
-                                </div>
-                                <div class="decor-leaf-2">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/decor-leaf-2.svg"
-                                        alt="shape-img">
-                                </div>
-                                <div class="burger-shape">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/burger-shape.png"
-                                        alt="shape-img">
-                                </div>
+                               
                             </a>
                         </div>
                         <div class="catagory-product-content text-center">
                             <h3>
-                                <a href="<?php echo get_term_link($term); ?>">
-                                    <?php echo esc_html($category_name); ?>
-                                </a>
+                                  <a href="<?php echo esc_url($term_link); ?>">
+                                            <?php echo esc_html($category_name); ?>
+                                        </a>
                             </h3>
                             <p><?php echo $product_count; ?> products</p>
                         </div>
