@@ -51,7 +51,7 @@
                         
                         // Final fallback to default image
                         if (!$product_image) {
-                            $product_image = get_template_directory_uri() . '/assets/images/default-category.jpg';
+                            $product_image = get_template_directory_uri() . '/assets/images/category.jpg';
                         }
                         
                         $term_link = get_term_link($term);
