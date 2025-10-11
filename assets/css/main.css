@@ -3418,37 +3418,11 @@ input.main-search-input::placeholder {
   z-index: 9;
   height: 245px;
 }
-.catagory-product-card .catagory-product-image .decor-leaf {
-  position: absolute;
-  right: 20px;
-  top: 0px;
-  transform: translate(-40px, 40px);
-  transition: all 0.35s ease-in-out;
-  transition-delay: 0.1s;
-  opacity: 0;
-  z-index: -1;
-  visibility: hidden;
+.catagory-product-card .catagory-product-image img{
+  border-radius: 10px;
 }
-.catagory-product-card .catagory-product-image .decor-leaf-2 {
-  position: absolute;
-  left: 20px;
-  bottom: 0px;
-  transition: all ease 0.35s;
-  transition-delay: 0.1s;
-  opacity: 0;
-  z-index: -1;
-  visibility: hidden;
-}
-@media (max-width: 767px) {
-  .catagory-product-card .catagory-product-image .decor-leaf-2 {
-    left: 45px;
-  }
-}
-@media (max-width: 575px) {
-  .catagory-product-card .catagory-product-image .decor-leaf-2 {
-    left: 10px;
-  }
-}
+
+
 .catagory-product-card .catagory-product-image .burger-shape {
   position: absolute;
   top: 30px;

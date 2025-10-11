@@ -40,20 +40,20 @@
                         $category_name = $term->name;
                         $category_description = $term->description;
                         
-                        // Get ACF field for feature image
-                        $product_image = get_field('feature_image', $term->taxonomy . '_' . $term->term_id);
-                        
-                        // Fallback image if ACF field is empty
-                        $thumbnail_id = get_term_meta($term->term_id, 'category_thumbnail', true);
-                        if (!$product_image && $thumbnail_id) {
-                            $product_image = wp_get_attachment_url($thumbnail_id);
+                      // WooCommerce category thumbnail (custom size)
+                        if (!$product_image) {
+                            $thumbnail_id = get_term_meta($term->term_id, 'thumbnail_id', true);
+                            if ($thumbnail_id) {
+                                $img = wp_get_attachment_image_src($thumbnail_id, 'category_thumbnail');
+                                $product_image = $img ? $img[0] : '';
+                            }
                         }
-                        
-                        // Final fallback to default image
+
+                        // Default fallback
                         if (!$product_image) {
                             $product_image = get_template_directory_uri() . '/assets/images/category.jpg';
                         }
-                        
+                                                
                         $term_link = get_term_link($term);
                         
                         // Skip if there's an error with the term link
@@ -67,19 +67,18 @@
                 <div class="swiper-slide">
                     <div class="catagory-product-card bg-cover"
                         style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/catagory-card-shape.jpg');">
-                        <h5><?php echo $product_count; ?> products</h5>
                         <div class="catagory-product-image text-center">
                             <a href="<?php echo get_term_link($term); ?>">
                                 <img src="<?php echo esc_url($product_image); ?>"
                                     alt="<?php echo esc_attr($category_name); ?>">
-                               
+
                             </a>
                         </div>
                         <div class="catagory-product-content text-center">
                             <h3>
-                                  <a href="<?php echo esc_url($term_link); ?>">
-                                            <?php echo esc_html($category_name); ?>
-                                        </a>
+                                <a href="<?php echo esc_url($term_link); ?>">
+                                    <?php echo esc_html($category_name); ?>
+                                </a>
                             </h3>
                             <p><?php echo $product_count; ?> products</p>
                         </div>
