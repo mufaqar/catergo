@@ -1,6 +1,7 @@
 <?php
 
     include_once('ajax_calls.php');
+    include_once('store.php');
 
     function handle_contact_form() {
         check_ajax_referer('ajax-contact-nonce', 'security');
@@ -31,6 +32,3 @@
     }
     add_action('wp_ajax_submit_contact_form', 'handle_contact_form');
     add_action('wp_ajax_nopriv_submit_contact_form', 'handle_contact_form');
-
-
-
