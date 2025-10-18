@@ -1,4 +1,3 @@
-
 .white-popup {
   background: #fff;
   padding: 25px;
@@ -14,4 +13,8 @@
 
 .food-menu-content {
   max-width: 60%;
+}
+
+.woocommerce .quantity .qty {
+  color: black !important;
 }
