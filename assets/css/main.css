@@ -7263,6 +7263,8 @@ input.main-search-input::placeholder {
   border-radius: 20px;
   line-height: 1;
   justify-content: space-between;
+  width: 100%;
+  color: #000 !important;
 }
 .product-details-wrapper.style-2 .product-form-wrapper .form-clt .qty button,
 .product-details-wrapper.style-2 .product-form-wrapper .form-clt .qty input {
