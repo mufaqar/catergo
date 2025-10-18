@@ -5,7 +5,7 @@
  */
 get_header();
 
-$bg_image = get_theme_mod('category_archive_bg_image') ?: get_template_directory_uri() . '/assets/images/bg-img/97.jpg';
+$bg_image = get_theme_mod('category_archive_bg_image') ?: get_template_directory_uri() . '/assets/images/banner-bg.jpg';
 
 get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image,
