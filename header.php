@@ -230,8 +230,8 @@
                     <div class="header-main">
                         <div class="logo">
                             <a href="<?php bloginfo('url'); ?>" class="header-logo">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images//Logo.svg" width="170" height="43"   
-                                    alt="Catergo-Logo">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images//Logo.svg"
+                                    width="170" height="43" alt="Catergo-Logo">
                             </a>
                         </div>
                         <div class="header-left">

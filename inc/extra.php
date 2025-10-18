@@ -32,3 +32,10 @@
     }
     add_action('wp_ajax_submit_contact_form', 'handle_contact_form');
     add_action('wp_ajax_nopriv_submit_contact_form', 'handle_contact_form');
+
+    add_action('wp_enqueue_scripts', function() {
+    if (class_exists('WooCommerce')) {
+        wp_enqueue_script('wc-add-to-cart');
+        wp_enqueue_script('wc-cart-fragments');
+    }
+});
