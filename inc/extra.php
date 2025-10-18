@@ -2,6 +2,10 @@
 
     include_once('ajax_calls.php');
     include_once('store.php');
+      include_once('request.php');
+
+ 
+
 
     function handle_contact_form() {
         check_ajax_referer('ajax-contact-nonce', 'security');
