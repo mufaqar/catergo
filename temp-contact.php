@@ -17,7 +17,7 @@ get_header(); ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                 <div class="contact-info-items text-center">
                     <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon/location.svg"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/location.svg"
                             alt="icon-img">
                     </div>
                     <div class="content">
@@ -31,7 +31,7 @@ get_header(); ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".5s">
                 <div class="contact-info-items active text-center">
                     <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon/phone.svg"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/phone.svg"
                             alt="icon-img">
                     </div>
                     <div class="content">
@@ -45,7 +45,7 @@ get_header(); ?>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".7s">
                 <div class="contact-info-items text-center">
                     <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon/email.svg"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/email.svg"
                             alt="icon-img">
                     </div>
                     <div class="content">
