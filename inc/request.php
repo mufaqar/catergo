@@ -96,3 +96,40 @@ function render_request_details_meta_box($post) {
     }
     echo '</table>';
 }
+
+
+
+// contact page 
+
+/**
+ * Handle AJAX Contact Form Submission
+ */
+add_action('wp_ajax_handle_contact_form', 'handle_contact_form');
+add_action('wp_ajax_nopriv_handle_contact_form', 'handle_contact_form');
+
+function handle_contact_form() {
+    check_ajax_referer('ajax_contact_nonce', 'contact_nonce');
+
+    $name    = sanitize_text_field($_POST['name'] ?? '');
+    $email   = sanitize_email($_POST['email'] ?? '');
+    $message = sanitize_textarea_field($_POST['message'] ?? '');
+
+    if (empty($name) || empty($email) || empty($message)) {
+        wp_send_json_error(['message' => 'Please fill out all required fields.']);
+    }
+
+    $admin_email = get_option('admin_email');
+    $subject = 'New Contact Form Submission';
+    $body = "You have received a new message from your website contact form.\n\n";
+    $body .= "Name: $name\n";
+    $body .= "Email: $email\n";
+    $body .= "Message:\n$message\n";
+
+    $headers = ['Reply-To: ' . $name . ' <' . $email . '>'];
+
+    if (wp_mail($admin_email, $subject, $body, $headers)) {
+        wp_send_json_success(['message' => 'Thank you! Your message has been sent.']);
+    } else {
+        wp_send_json_error(['message' => 'Failed to send email. Please try again later.']);
+    }
+}
