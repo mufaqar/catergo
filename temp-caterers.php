@@ -59,8 +59,9 @@ get_header();
                     <h3 class="fw-bold">Popular Items</h3>
                 </div>
 
-                <div class="row">
-                    <?php
+                <div class="fooder-menu-wrapper">
+                    <div class="row">
+                        <?php
               $products = get_posts([
                 'post_type'      => 'product',
                 'meta_key'       => '_assigned_store',
@@ -74,35 +75,40 @@ get_header();
                   $price   = get_post_meta($product->ID, '_price', true);
                   $excerpt = wp_trim_words(get_the_excerpt($product->ID), 15);
               ?>
-                    <div class="col-xl-6 col-lg-6 mb-3">
-                        <div
-                            class="food-menu-items d-flex align-items-center justify-content-between border rounded p-3 shadow-sm bg-white">
-                            <div class="food-menu-content">
-                                <h5 class="mb-1">
-                                    <a href="<?php echo get_permalink($product->ID); ?>"
-                                        class="text-dark text-decoration-none">
-                                        <?php echo esc_html($product->post_title); ?>
+                        <div class="col-xl-6 col-lg-6 mb-3">
+                            <div
+                                class="food-menu-items d-flex align-items-center justify-content-between border rounded p-3 shadow-sm bg-white">
+                                <div class="food-menu-content">
+                                    <h5 class="mb-1">
+                                        <a href="<?php echo get_permalink($product->ID); ?>"
+                                            class="text-dark text-decoration-none">
+                                            <?php echo esc_html($product->post_title); ?>
+                                        </a>
+                                    </h5>
+                                    <div class="store_name">
+                                        <?php echo get_product_store_name(get_the_ID()); ?>
+                                    </div>
+                                    <p class="small text-muted mb-0">
+                                        <?php echo esc_html($excerpt ?: 'No description available.'); ?></p>
+                                </div>
+                                <div class="text-end">
+                                    <?php if ($price) : ?>
+                                    <h6 class="text-primary fw-bold mb-1"><?php echo wc_price($price); ?></h6>
+                                    <?php endif; ?>
+                                    <a href="#" class="product-popup plusicon"
+                                        data-productid="<?php echo $product->ID; ?>">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                     </a>
-                                </h5>
-                                <p class="small text-muted mb-0">
-                                    <?php echo esc_html($excerpt ?: 'No description available.'); ?></p>
-                            </div>
-                            <div class="text-end">
-                                <?php if ($price) : ?>
-                                <h6 class="text-primary fw-bold mb-1"><?php echo wc_price($price); ?></h6>
-                                <?php endif; ?>
-                                <a href="#" class="product-popup plusicon" data-productid="<?php echo $product->ID; ?>">
-                                    <i class="fa fa-plus-circle"></i>
-                                </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php
+                        <?php
                 endforeach;
               else :
                 echo '<div class="col-12"><p class="text-muted"><em>No products found for this caterer.</em></p></div>';
               endif;
               ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,91 +122,6 @@ get_header();
     </div>
 </section>
 
-<!-- Hidden Popup Container -->
-<div id="product-popup" class="mfp-hide white-popup">
-    <div class="popup-inner">
-        <div class="text-center py-5">Loading...</div>
-    </div>
-</div>
 
-<style>
-.white-popup {
-    background: #fff;
-    padding: 25px;
-    max-width: 650px;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-</style>
 
 <?php get_footer(); ?>
-
-<script>
-jQuery(document).ready(function($) {
-    // Product popup trigger
-    $(".product-popup").on("click", function(e) {
-        e.preventDefault();
-        const productID = $(this).data("productid");
-        const popup = $("#product-popup");
-
-        popup.find(".popup-inner").html('<div class="text-center py-5">Loading...</div>');
-
-        $.post("<?php echo admin_url('admin-ajax.php'); ?>", {
-            action: "get_product_popup",
-            product_id: productID
-        }, function(response) {
-            if (response.success) {
-                popup.find(".popup-inner").html(response.data);
-            } else {
-                popup.find(".popup-inner").html(
-                    '<p class="text-danger">Error loading product.</p>');
-            }
-        });
-
-        $.magnificPopup.open({
-            items: {
-                src: "#product-popup"
-            },
-            type: "inline",
-            midClick: true,
-            mainClass: "mfp-fade"
-        });
-    });
-
-    // Handle Add to Cart inside popup
-    $(document).on("submit", ".popup-inner form.cart", function(e) {
-        e.preventDefault();
-        const form = $(this);
-        const note = form.find("textarea[name='custom_note']").val();
-        form.find("input[name='custom_note_field']").val(note);
-        const formData = form.serialize();
-
-        $.ajax({
-            url: wc_add_to_cart_params.wc_ajax_url.replace("%%endpoint%%", "add_to_cart"),
-            type: "POST",
-            data: formData,
-            success: function(response) {
-                if (response && response.fragments) {
-                    $.each(response.fragments, function(key, value) {
-                        $(key).replaceWith(value);
-                    });
-                    form.html(
-                        '<div class="alert alert-success">✅ Added to cart successfully!</div>'
-                    );
-                    setTimeout(() => $.magnificPopup.close(), 1200);
-                } else {
-                    form.prepend(
-                        '<div class="alert alert-danger">Error adding to cart. Please try again.</div>'
-                    );
-                }
-            },
-            error: function() {
-                form.prepend(
-                    '<div class="alert alert-danger">Server error. Try again.</div>');
-            }
-        });
-    });
-});
-</script>

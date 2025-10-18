@@ -195,3 +195,40 @@ add_filter('manage_edit-product_sortable_columns', function($columns) {
     $columns['store'] = 'store';
     return $columns;
 });
+
+
+
+/**
+ * Get the assigned store name (and optional link) for a WooCommerce product.
+ *
+ * @param int|null $product_id  Product ID (defaults to current product)
+ * @param bool     $linked      Whether to return a linked name (default: true)
+ * @return string|null          Store name HTML or null if none found
+ */
+function get_product_store_name($product_id = null, $linked = true) {
+    if (!$product_id) {
+        global $product;
+        if (!$product instanceof WC_Product) return null;
+        $product_id = $product->get_id();
+    }
+
+    $store_id = get_post_meta($product_id, '_assigned_store', true);
+
+    if (!$store_id) return null;
+
+    $store = get_post($store_id);
+    if (!$store || $store->post_type !== 'store') return null;
+
+    $store_name = esc_html($store->post_title);
+    $store_link = get_permalink($store_id);
+
+    if ($linked) {
+        return sprintf(
+            '<a href="%s" class="store-link text-secondary fw-semibold">%s</a>',
+            esc_url($store_link),
+            $store_name
+        );
+    }
+
+    return $store_name;
+}

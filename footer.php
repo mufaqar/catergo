@@ -89,8 +89,8 @@
                          </div>
                          <div class="footer-address-text">
                              <h6>
-                               	Ljungaverk, Southern Norrland <span>	840 10</span>
-                                 	Sweden
+                                 Ljungaverk, Southern Norrland <span> 840 10</span>
+                                 Sweden
                              </h6>
                              <h5>Hours:</h5>
                              <h6>
@@ -121,7 +121,8 @@
          <div class="container">
              <div class="footer-bottom-wrapper d-flex align-items-center justify-content-between">
                  <p class="wow fadeInLeft" data-wow-delay=".3s">
-                     © Copyright <span class="theme-color-3">2025</span> <a href="https://mufaqar.com">Catergo </a>. All Rights
+                     © Copyright <span class="theme-color-3">2025</span> <a href="https://mufaqar.com">Catergo </a>. All
+                     Rights
                      Reserved.
                  </p>
                  <div class="card-image wow fadeInRight" data-wow-delay=".5s">
@@ -154,9 +155,86 @@
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/main.js"></script>
 
 
+ <div id="product-popup" class="mfp-hide white-popup">
+     <div class="popup-inner text-center py-5">Loading...</div>
+ </div>
+
+ <style>
+
+ </style>
+
  <?php wp_footer(); ?>
 
 
  </body>
 
  </html>
+
+
+ <script>
+jQuery(document).ready(function($) {
+    // Product popup trigger
+    $(".product-popup").on("click", function(e) {
+        e.preventDefault();
+        const productID = $(this).data("productid");
+        const popup = $("#product-popup");
+
+        popup.find(".popup-inner").html('<div class="text-center py-5">Loading...</div>');
+
+        $.post("<?php echo admin_url('admin-ajax.php'); ?>", {
+            action: "get_product_popup",
+            product_id: productID
+        }, function(response) {
+            if (response.success) {
+                popup.find(".popup-inner").html(response.data);
+            } else {
+                popup.find(".popup-inner").html(
+                    '<p class="text-danger">Error loading product.</p>');
+            }
+        });
+
+        $.magnificPopup.open({
+            items: {
+                src: "#product-popup"
+            },
+            type: "inline",
+            midClick: true,
+            mainClass: "mfp-fade"
+        });
+    });
+
+    // Handle Add to Cart inside popup
+    $(document).on("submit", ".popup-inner form.cart", function(e) {
+        e.preventDefault();
+        const form = $(this);
+        const note = form.find("textarea[name='custom_note']").val();
+        form.find("input[name='custom_note_field']").val(note);
+        const formData = form.serialize();
+
+        $.ajax({
+            url: wc_add_to_cart_params.wc_ajax_url.replace("%%endpoint%%", "add_to_cart"),
+            type: "POST",
+            data: formData,
+            success: function(response) {
+                if (response && response.fragments) {
+                    $.each(response.fragments, function(key, value) {
+                        $(key).replaceWith(value);
+                    });
+                    form.html(
+                        '<div class="alert alert-success">✅ Added to cart successfully!</div>'
+                    );
+                    setTimeout(() => $.magnificPopup.close(), 1200);
+                } else {
+                    form.prepend(
+                        '<div class="alert alert-danger">Error adding to cart. Please try again.</div>'
+                    );
+                }
+            },
+            error: function() {
+                form.prepend(
+                    '<div class="alert alert-danger">Server error. Try again.</div>');
+            }
+        });
+    });
+});
+ </script>

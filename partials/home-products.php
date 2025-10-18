@@ -40,11 +40,12 @@
                     $image_url = get_the_post_thumbnail_url(get_the_ID(), 'medium') ?: wc_placeholder_img_src();
                     $image_alt = get_the_title();
                     ?>
-                    
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="<?php echo esc_attr($delay_classes[$delay_index]); ?>">
-                        <div class="catagory-product-card-2 text-center">
-                            <div class="icon">
-                                <?php
+
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="<?php echo esc_attr($delay_classes[$delay_index]); ?>">
+                <div class="catagory-product-card-2 text-center">
+                    <div class="icon">
+                        <?php
                                 // Wishlist (if plugin available)
                                 if (function_exists('YITH_WCWL')) {
                                     echo do_shortcode('[yith_wcwl_add_to_wishlist product_id="' . get_the_ID() . '"]');
@@ -52,37 +53,43 @@
                                     echo '<a href="#"><i class="far fa-heart"></i></a>';
                                 }
                                 ?>
-                            </div>
-
-                            <div class="catagory-product-image">
-                                <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                                </a>
-                                <?php if ($product->is_on_sale()) : ?>
-                                    <span class="onsale">-<?php echo esc_html($discount_percent); ?>%</span>
-                                <?php endif; ?>
-                            </div>
-
-                            <div class="catagory-product-content">
-                                <div class="catagory-button">
-                                    <?php woocommerce_template_loop_add_to_cart(); ?>
-                                </div>
-
-                                <div class="info-price d-flex align-items-center justify-content-center">
-                                    <?php if ($discount_percent > 0) : ?>
-                                        <p>-<?php echo esc_html($discount_percent); ?>%</p>
-                                    <?php endif; ?>
-                                    <h6><?php echo $price_html; ?></h6>
-                                </div>
-
-                                <h4>
-                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                </h4>
-                            </div>
-                        </div>
                     </div>
 
-                    <?php
+                    <div class="catagory-product-image">
+                        <a href="<?php the_permalink(); ?>">
+                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                        </a>
+                        <?php if ($product->is_on_sale()) : ?>
+                        <span class="onsale">-<?php echo esc_html($discount_percent); ?>%</span>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="catagory-product-content">
+                        <div class="info-price d-flex align-items-center justify-content-center">
+                            <?php if ($discount_percent > 0) : ?>
+                            <p>-<?php echo esc_html($discount_percent); ?>%</p>
+                            <?php endif; ?>
+                            <h6><?php echo $price_html; ?></h6>
+                        </div>
+                        <h4>
+                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+
+                        </h4>
+                        <div class="store_name">
+                            <?php echo get_product_store_name(get_the_ID()); ?>
+                        </div>
+                        <div class="">
+                            <a href="#" class="product-popup btn btn-outline-secondary btn-sm"
+                                data-productid="<?php echo get_the_ID(); ?>">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <?php
                     $delay_index++;
                     if ($delay_index >= count($delay_classes)) {
                         $delay_index = 0;
@@ -91,9 +98,9 @@
                 wp_reset_postdata();
             else :
                 ?>
-                <div class="col-12 text-center">
-                    <p>No products found.</p>
-                </div>
+            <div class="col-12 text-center">
+                <p>No products found.</p>
+            </div>
             <?php endif; ?>
         </div>
 

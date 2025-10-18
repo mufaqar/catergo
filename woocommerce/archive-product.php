@@ -122,7 +122,7 @@ get_template_part('partials/content', 'breadcrumb', ['bg' => $bg_image]);
             <!-- Sidebar -->
             <div class="col-xl-3 col-lg-4 order-2 order-md-1 mt-5">
                 <div class="main-sidebar">
-                    
+
                     <!-- WooCommerce Categories -->
                     <div class="single-sidebar-widget">
                         <div class="wid-title">
@@ -176,7 +176,9 @@ get_template_part('partials/content', 'breadcrumb', ['bg' => $bg_image]);
 
                     <!-- Price Filter -->
                     <div class="single-sidebar-widget">
-                        <div class="wid-title"><h4>Price Filter</h4></div>
+                        <div class="wid-title">
+                            <h4>Price Filter</h4>
+                        </div>
                         <div class="range__barcustom">
                             <?php
                             $current_url = is_product_category() ? get_term_link(get_queried_object()) : get_permalink(wc_get_page_id('shop'));
@@ -187,12 +189,14 @@ get_template_part('partials/content', 'breadcrumb', ['bg' => $bg_image]);
                                         <div class="field"><span>Price:</span></div>
                                         <div class="field">
                                             <span>$</span>
-                                            <input type="number" name="min_price" value="<?php echo esc_attr($_GET['min_price'] ?? '0'); ?>">
+                                            <input type="number" name="min_price"
+                                                value="<?php echo esc_attr($_GET['min_price'] ?? '0'); ?>">
                                         </div>
                                         <div class="separators">-</div>
                                         <div class="field">
                                             <span>$</span>
-                                            <input type="number" name="max_price" value="<?php echo esc_attr($_GET['max_price'] ?? '1000'); ?>">
+                                            <input type="number" name="max_price"
+                                                value="<?php echo esc_attr($_GET['max_price'] ?? '1000'); ?>">
                                         </div>
                                         <button type="submit" class="theme-btn border-radius-none">Filter</button>
 
@@ -218,7 +222,9 @@ get_template_part('partials/content', 'breadcrumb', ['bg' => $bg_image]);
 
                     <!-- New Arrivals -->
                     <div class="single-sidebar-widget">
-                        <div class="wid-title"><h4>New Arrivals</h4></div>
+                        <div class="wid-title">
+                            <h4>New Arrivals</h4>
+                        </div>
                         <div class="popular-food-posts">
                             <?php
                             $new_arrivals_args = [
@@ -253,16 +259,18 @@ get_template_part('partials/content', 'breadcrumb', ['bg' => $bg_image]);
                                 while ($new_arrivals->have_posts()) : $new_arrivals->the_post();
                                     $product = wc_get_product(get_the_ID());
                                     ?>
-                                    <div class="single-post-item">
-                                        <div class="thumb bg-cover" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>');"></div>
-                                        <div class="post-content">
-                                            <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                                            <div class="post-price">
-                                                <?php echo $product->get_price_html(); ?>
-                                            </div>
-                                        </div>
+                            <div class="single-post-item">
+                                <div class="thumb bg-cover"
+                                    style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>');">
+                                </div>
+                                <div class="post-content">
+                                    <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                    <div class="post-price">
+                                        <?php echo $product->get_price_html(); ?>
                                     </div>
-                                <?php endwhile;
+                                </div>
+                            </div>
+                            <?php endwhile;
                                 wp_reset_postdata();
                             endif;
                             ?>
@@ -276,25 +284,36 @@ get_template_part('partials/content', 'breadcrumb', ['bg' => $bg_image]);
                 <div class="woocommerce-notices-wrapper mb-0">
                     <div class="product-showing">
                         <?php if (is_product_category()) : ?>
-                            <?php 
+                        <?php 
                             $current_cat = get_queried_object();
                             $category_title = $current_cat->name;
                             ?>
-                            <h5>Category: <span><?php echo esc_html($category_title); ?></span> - Showing <span><?php echo intval($shop_query->post_count); ?> product<?php echo ($shop_query->post_count != 1) ? 's' : ''; ?></span></h5>
+                        <h5>Category: <span><?php echo esc_html($category_title); ?></span> - Showing
+                            <span><?php echo intval($shop_query->post_count); ?>
+                                product<?php echo ($shop_query->post_count != 1) ? 's' : ''; ?></span>
+                        </h5>
                         <?php else : ?>
-                            <h5>Showing <span><?php echo intval($shop_query->post_count); ?> product<?php echo ($shop_query->post_count != 1) ? 's' : ''; ?></span></h5>
+                        <h5>Showing <span><?php echo intval($shop_query->post_count); ?>
+                                product<?php echo ($shop_query->post_count != 1) ? 's' : ''; ?></span></h5>
                         <?php endif; ?>
                     </div>
                     <div class="form-clt">
                         <h6>Sort by: <a href="#"><i class="fal fa-sort-alt"></i></a></h6>
-                        <form method="GET" action="<?php echo esc_url(is_product_category() ? get_term_link(get_queried_object()) : get_permalink(wc_get_page_id('shop'))); ?>" class="sort-form">
+                        <form method="GET"
+                            action="<?php echo esc_url(is_product_category() ? get_term_link(get_queried_object()) : get_permalink(wc_get_page_id('shop'))); ?>"
+                            class="sort-form">
                             <select name="orderby" class="nice-select" onchange="this.form.submit()">
-                                <option value="menu_order" <?php selected($_GET['orderby'] ?? '', 'menu_order'); ?>>Default</option>
-                                <option value="popularity" <?php selected($_GET['orderby'] ?? '', 'popularity'); ?>>Popularity</option>
-                                <option value="rating" <?php selected($_GET['orderby'] ?? '', 'rating'); ?>>Average Rating</option>
+                                <option value="menu_order" <?php selected($_GET['orderby'] ?? '', 'menu_order'); ?>>
+                                    Default</option>
+                                <option value="popularity" <?php selected($_GET['orderby'] ?? '', 'popularity'); ?>>
+                                    Popularity</option>
+                                <option value="rating" <?php selected($_GET['orderby'] ?? '', 'rating'); ?>>Average
+                                    Rating</option>
                                 <option value="date" <?php selected($_GET['orderby'] ?? '', 'date'); ?>>Newest</option>
-                                <option value="price" <?php selected($_GET['orderby'] ?? '', 'price'); ?>>Price: Low to High</option>
-                                <option value="price-desc" <?php selected($_GET['orderby'] ?? '', 'price-desc'); ?>>Price: High to Low</option>
+                                <option value="price" <?php selected($_GET['orderby'] ?? '', 'price'); ?>>Price: Low to
+                                    High</option>
+                                <option value="price-desc" <?php selected($_GET['orderby'] ?? '', 'price-desc'); ?>>
+                                    Price: High to Low</option>
                             </select>
                             <?php
                             // preserve filters
@@ -320,36 +339,34 @@ get_template_part('partials/content', 'breadcrumb', ['bg' => $bg_image]);
                         while ($shop_query->have_posts()) : $shop_query->the_post();
                             $product = wc_get_product(get_the_ID());
                             ?>
-                            <div class="col-xl-12 col-lg-12">
-                                <div class="shop-list-items">
-                                    <div class="shop-image">
-                                        <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'large')); ?>" alt="<?php the_title(); ?>">
-                                        <?php if ($product->is_on_sale()): ?>
-                                            <span class="onsale">Sale!</span>
-                                        <?php endif; ?>
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="shop-list-items">
+                            <div class="shop-image">
+                                <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'large')); ?>"
+                                    alt="<?php the_title(); ?>">
+                                <?php if ($product->is_on_sale()): ?>
+                                <span class="onsale">Sale!</span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="shop-content">
+                                <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                <div class="store_name">
+                                        <?php echo get_product_store_name(get_the_ID()); ?>
                                     </div>
-                                    <div class="shop-content">
-                                        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                                        <p><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
-                                        <h5><?php echo $product->get_price_html(); ?></h5>
-                                        <div class="shop-list-btn">
-                                            <?php 
-                                            // Use WooCommerce add to cart button
-                                            echo apply_filters('woocommerce_loop_add_to_cart_link',
-                                                sprintf('<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-                                                    esc_url($product->add_to_cart_url()),
-                                                    esc_attr(1),
-                                                    esc_attr('theme-btn border-radius-none' . ($product->is_purchasable() && $product->is_in_stock() ? ' add_to_cart_button' : '')),
-                                                    $product->is_purchasable() && $product->is_in_stock() ? 'data-product_id="' . esc_attr($product->get_id()) . '"' : '',
-                                                    esc_html($product->add_to_cart_text())
-                                                ),
-                                            $product);
-                                            ?>
-                                        </div>
+                                <p><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
+                                <h5><?php echo $product->get_price_html(); ?></h5>
+                                <div class="shop-list-btn">
+                                    <div class="">
+                                        <a href="#" class="product-popup btn btn-outline-secondary btn-sm"
+                                            data-productid="<?php echo get_the_ID(); ?>">
+                                           <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        <?php endwhile;
+                        </div>
+                    </div>
+                    <?php endwhile;
                     else :
                         echo '<div class="col-12"><p>No products found.</p></div>';
                     endif;
