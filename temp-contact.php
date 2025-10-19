@@ -103,14 +103,6 @@ get_header(); ?>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12 wow fadeInUp" data-wow-delay=".7s">
-                                    <div class="form-clt-big form-clt">
-                                        <textarea name="message" placeholder="Enter Your Message here"
-                                            required></textarea>
-                                        <div class="icon"><i class="fal fa-edit"></i></div>
-                                    </div>
-                                </div>
-
                                 <div class="col-lg-6 wow fadeInUp" data-wow-delay=".8s">
                                     <button type="submit" class="theme-btn">
                                         <span class="button-content-wrapper d-flex align-items-center">
