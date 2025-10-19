@@ -52,44 +52,95 @@
                 <div class="col-lg-5 mt-5 mt-lg-0 wow fadeInUp" data-wow-delay=".4s">
                     <div class="booking-contact bg-cover"
                         style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/booking-shape.png');">
-                        <h4 class="text-center text-white">create an reservation</h4>
-                        <div class="booking-items">
-                            <div class="form-clt">
-                                <div class="nice-select" tabindex="0">
-                                    <span class="current">
-                                        no of person
-                                    </span>
-                                    <ul class="list">
-                                        <li data-value="1" class="option selected">
-                                            no of person
-                                        </li>
-                                        <li data-value="1" class="option">
-                                            no of person
-                                        </li>
-                                        <li data-value="1" class="option">
-                                            no of person
-                                        </li>
-                                    </ul>
+                        <h4 class="text-center text-white">Quick Reservation</h4>
+
+                        <form id="ajax-quick-reservation">
+                            <?php wp_nonce_field('ajax_quick_reservation_nonce', 'quick_reservation_nonce'); ?>
+                            <div class="booking-items">
+
+                                <!-- Number of Persons -->
+                                <div class="form-clt">
+                                    <label for="persons" class="text-white mb-1 d-block">Number of Persons*</label>
+                                    <select name="persons" id="persons" required class="form-select">
+                                        <option value="">Select</option>
+                                        <option value="1">1 Person</option>
+                                        <option value="2">2 Persons</option>
+                                        <option value="3">3 Persons</option>
+                                        <option value="4">4 Persons</option>
+                                        <option value="5+">5+ Persons</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="form-clt">
-                                <input type="text" name="number" id="number" placeholder="phone number">
-                                <div class="icon">
-                                    <i class="fas fa-phone"></i>
+
+                                <!-- Phone -->
+                                <div class="form-clt">
+                                    <label for="phone" class="text-white mb-1 d-block">Phone Number*</label>
+                                    <input type="text" name="phone" id="phone" placeholder="Enter phone number"
+                                        required>
+
                                 </div>
+
+                                <!-- Date -->
+                                <div class="form-clt">
+                                    <label for="date" class="text-white mb-1 d-block">Reservation Date*</label>
+                                    <input type="date" id="date" name="date" required>
+                                </div>
+
+                                <!-- Time -->
+                                <div class="form-clt">
+                                    <label for="time" class="text-white mb-1 d-block">Time*</label>
+                                    <input type="time" id="time" name="time" required>
+                                </div>
+
+                                <!-- Message -->
+                                <div class="form-clt">
+                                    <label for="message" class="text-white mb-1 d-block">Message</label>
+                                    <textarea name="message" id="message" placeholder="Additional details"></textarea>
+                                </div>
+
+                                <!-- Submit -->
+                                <div class="form-clt text-center mt-3">
+                                    <button type="submit" class="theme-btn bg-yellow w-100">Book Now</button>
+                                </div>
+
+                                <p id="reservation-response" class="mt-3 text-center text-white" style="display:none;">
+                                </p>
                             </div>
-                            <div class="form-clt">
-                                <input type="date" id="calendar" name="calendar">
-                            </div>
-                            <div class="form-clt">
-                                <a href="reservation.html" class="theme-btn bg-yellow">
-                                    booking now
-                                </a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+jQuery(document).ready(function($) {
+    $('#ajax-quick-reservation').on('submit', function(e) {
+        e.preventDefault();
+        const formData = $(this).serialize();
+        $.ajax({
+            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            type: 'POST',
+            data: formData + '&action=handle_quick_reservation',
+            beforeSend: function() {
+                $('#reservation-response').hide().removeClass('text-success text-danger');
+            },
+            success: function(response) {
+                if (response.success) {
+                    $('#reservation-response').addClass('text-success').text(response.data
+                        .message).fadeIn();
+                    $('#ajax-quick-reservation')[0].reset();
+                } else {
+                    $('#reservation-response').addClass('text-danger').text(response.data
+                        .message).fadeIn();
+                }
+            },
+            error: function() {
+                $('#reservation-response').addClass('text-danger').text(
+                    'Something went wrong. Please try again.').fadeIn();
+            }
+        });
+    });
+});
+</script>

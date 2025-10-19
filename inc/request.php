@@ -133,3 +133,41 @@ function handle_contact_form() {
         wp_send_json_error(['message' => 'Failed to send email. Please try again later.']);
     }
 }
+
+
+/**
+ * Handle Quick Reservation AJAX Form
+ */
+add_action('wp_ajax_handle_quick_reservation', 'handle_quick_reservation');
+add_action('wp_ajax_nopriv_handle_quick_reservation', 'handle_quick_reservation');
+
+function handle_quick_reservation() {
+    check_ajax_referer('ajax_quick_reservation_nonce', 'quick_reservation_nonce');
+
+    $persons = sanitize_text_field($_POST['persons'] ?? '');
+    $phone   = sanitize_text_field($_POST['phone'] ?? '');
+    $date    = sanitize_text_field($_POST['date'] ?? '');
+    $time    = sanitize_text_field($_POST['time'] ?? '');
+    $message = sanitize_textarea_field($_POST['message'] ?? '');
+
+    if (empty($persons) || empty($phone) || empty($date) || empty($time)) {
+        wp_send_json_error(['message' => 'Please fill all required fields.']);
+    }
+
+    $admin_email = get_option('admin_email');
+    $subject = 'New Quick Reservation';
+    $body  = "A new quick reservation has been submitted:\n\n";
+    $body .= "Persons: $persons\n";
+    $body .= "Phone: $phone\n";
+    $body .= "Date: $date\n";
+    $body .= "Time: $time\n";
+    $body .= "Message: $message\n";
+
+    $headers = ['Reply-To: ' . $phone];
+
+    if (wp_mail($admin_email, $subject, $body, $headers)) {
+        wp_send_json_success(['message' => 'Thank you! Your reservation has been received.']);
+    } else {
+        wp_send_json_error(['message' => 'Failed to send email. Please try again later.']);
+    }
+}
