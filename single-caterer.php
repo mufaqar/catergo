@@ -1,5 +1,5 @@
 <?php
-/* Template for Single Store */
+/* Template for Single caterer */
 get_header();
 
 if (have_posts()) :
