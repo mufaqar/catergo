@@ -3,6 +3,7 @@
     include_once('ajax_calls.php');
     include_once('store.php');
     include_once('request.php');
+    include_once('redirect.php');
 
  
 
@@ -40,4 +41,40 @@ add_action('woocommerce_add_order_item_meta', function ($item_id, $values) {
     if (!empty($values['custom_instructions'])) {
         wc_add_order_item_meta($item_id, 'Instructions', $values['custom_instructions']);
     }
+}, 10, 2);
+
+
+
+
+
+function current_location_shortcode() {
+    // From URL query var
+    $location = get_query_var('location');
+
+    // fallback from cookie
+    if (!$location && !empty($_COOKIE['selected_location'])) {
+        $location = sanitize_text_field($_COOKIE['selected_location']);
+    }
+
+    return $location ? $location : '';
+}
+add_shortcode('current_location', 'current_location_shortcode');
+
+
+add_filter('wp_nav_menu_objects', function($items, $args) {
+
+    // Get current location
+    $location = get_query_var('location');
+    if (!$location && !empty($_COOKIE['selected_location'])) {
+        $location = sanitize_text_field($_COOKIE['selected_location']);
+    }
+
+    foreach ($items as $item) {
+        // Replace placeholder __location__ in menu links
+        if (strpos($item->url, '__location__') !== false) {
+            $item->url = str_replace('__location__', $location ? $location : '', $item->url);
+        }
+    }
+
+    return $items;
 }, 10, 2);
