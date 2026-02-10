@@ -18,6 +18,23 @@ function create_store_post_type() {
 }
 add_action('init', 'create_store_post_type');
 
+// Create custom post type for Stores
+function create_Caterers_post_type() {
+    register_post_type('caterer',
+        array(
+            'labels' => array(
+                'name' => __('Caterers'),
+                'singular_name' => __('Caterer')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => array('title', 'editor', 'thumbnail'),
+            'menu_icon' => 'dashicons-store',
+        )
+    );
+}
+add_action('init', 'create_Caterers_post_type');
+
 // Add store relationship to products
 function add_store_to_products() {
     register_taxonomy(
