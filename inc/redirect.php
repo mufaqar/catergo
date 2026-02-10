@@ -1,7 +1,5 @@
 <?php
 
-
-<?php
 // 1️⃣ Rewrite selected pages with location slug
 function add_location_rewrite_for_pages($pages = []) {
     if (empty($pages)) return;
