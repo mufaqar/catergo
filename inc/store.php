@@ -33,7 +33,7 @@ function cptui_register_my_cpts() {
 		"map_meta_cap" => true,
 		"hierarchical" => false,
 		"can_export" => false,
-		"rewrite" => [ "slug" => "caterer", "with_front" => true ],
+		"rewrite" => [ "slug" => "%location%/caterer", "with_front" => false ],
 		"query_var" => true,
 		"supports" => [ "title", "editor", "thumbnail" ],
 		"show_in_graphql" => false,
@@ -335,3 +335,22 @@ function get_product_store_name($product_id = null, $linked = true) {
 
     return $store_name;
 }
+
+
+
+add_filter('post_type_link', function ($post_link, $post) {
+
+  if ($post->post_type !== 'caterer') {
+    return $post_link;
+  }
+
+  $terms = wp_get_post_terms($post->ID, 'location');
+
+  if (!empty($terms) && !is_wp_error($terms)) {
+    return str_replace('%location%', $terms[0]->slug, $post_link);
+  }
+
+  // fallback (should not happen)
+  return str_replace('%location%', 'location', $post_link);
+
+}, 10, 2);
