@@ -2,22 +2,124 @@
 // Add this to your theme's functions.php or create a custom plugin
 
 
-// Create custom post type for Stores
-function create_Caterers_post_type() {
-    register_post_type('caterer',
-        array(
-            'labels' => array(
-                'name' => __('Caterers'),
-                'singular_name' => __('Caterer')
-            ),
-            'public' => true,
-            'has_archive' => true,
-            'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-store',
-        )
-    );
+function cptui_register_my_cpts() {
+
+	/**
+	 * Post Type: Caterers.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "Caterers", "gt_theme" ),
+		"singular_name" => esc_html__( "Caterer", "gt_theme" ),
+	];
+
+	$args = [
+		"label" => esc_html__( "Caterers", "gt_theme" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"rest_namespace" => "wp/v2",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"delete_with_user" => false,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"can_export" => false,
+		"rewrite" => [ "slug" => "caterer", "with_front" => true ],
+		"query_var" => true,
+		"supports" => [ "title", "editor", "thumbnail" ],
+		"show_in_graphql" => false,
+	];
+
+	register_post_type( "caterer", $args );
 }
-add_action('init', 'create_Caterers_post_type');
+
+add_action( 'init', 'cptui_register_my_cpts' );
+
+
+function cptui_register_my_taxes_location() {
+
+	/**
+	 * Taxonomy: Locations.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "Locations", "gt_theme" ),
+		"singular_name" => esc_html__( "Location", "gt_theme" ),
+	];
+
+	
+	$args = [
+		"label" => esc_html__( "Locations", "gt_theme" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'location', 'with_front' => true,  'hierarchical' => true, ],
+		"show_admin_column" => false,
+		"show_in_rest" => true,
+		"show_tagcloud" => true,
+		"rest_base" => "location",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
+		"show_in_quick_edit" => true,
+		"sort" => true,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "location", [ "caterer" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_location' );
+
+
+function cptui_register_my_taxes_caterer_types() {
+
+	/**
+	 * Taxonomy: Types.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "Types", "gt_theme" ),
+		"singular_name" => esc_html__( "Type", "gt_theme" ),
+	];
+
+	
+	$args = [
+		"label" => esc_html__( "Types", "gt_theme" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'caterer_types', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"show_tagcloud" => true,
+		"rest_base" => "caterer_types",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
+		"show_in_quick_edit" => true,
+		"sort" => true,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "caterer_types", [ "caterer" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_caterer_types' );
+
 
 // Add store relationship to products
 function add_store_to_products() {
