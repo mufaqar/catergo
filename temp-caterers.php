@@ -11,7 +11,7 @@ if (!$location && !empty($_COOKIE['selected_location'])) {
 }
 
 // Now $location contains the current city slug (e.g., "stockholm")
-echo 'Current location: ' . esc_html($location);
+//echo 'Current location: ' . esc_html($location);
 ?>
 
 <section class="caterers-section py-5">
