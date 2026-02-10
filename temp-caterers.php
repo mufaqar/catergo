@@ -1,21 +1,33 @@
 <?php
 /* Template Name: Caterers */
 get_header();
+
+// 1. Try from URL query var
+$location = get_query_var('location');
+
+// 2. Fallback from cookie
+if (!$location && !empty($_COOKIE['selected_location'])) {
+    $location = sanitize_text_field($_COOKIE['selected_location']);
+}
+
+// Now $location contains the current city slug (e.g., "stockholm")
+echo 'Current location: ' . esc_html($location);
 ?>
 
 <section class="caterers-section py-5">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h1 class="section-title fw-bold">Our Caterers</h1>
+                <h1 class="section-title fw-bold">Our Caterers in <?php echo esc_html($location); ?></h1>
             </div>
         </div>
 
         <?php
     $stores = get_posts([
-      'post_type'      => 'store',
+      'post_type'      => 'caterer',
       'posts_per_page' => -1,
-      'post_status'    => 'publish'
+      'post_status'    => 'publish',
+      'location'        => $location,
     ]);
 
     if ($stores) :
