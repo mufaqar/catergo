@@ -141,3 +141,23 @@ function mytheme_woocommerce_custom_wrappers() {
     remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 }
 add_action('wp', 'mytheme_woocommerce_custom_wrappers');
+
+
+
+
+add_action('template_redirect', function () {
+
+  if (!is_front_page() || is_admin()) {
+    return;
+  }
+
+  if (!empty($_COOKIE['selected_location'])) {
+    $term = get_term_by('slug', sanitize_text_field($_COOKIE['selected_location']), 'location');
+
+    if ($term && !is_wp_error($term)) {
+      wp_redirect(home_url('/' . $term->slug . '/'), 302);
+      exit;
+    }
+  }
+
+});

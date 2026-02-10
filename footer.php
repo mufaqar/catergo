@@ -143,12 +143,11 @@
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-3.7.1.min.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/viewport.jquery.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.bundle.min.js"></script>
- <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.nice-select.min.js"></script>
+ <script src="<?php //echo get_template_directory_uri(); ?>/assets/js/jquery.nice-select.min.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.waypoints.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.counterup.min.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/swiper-bundle.min.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.meanmenu.min.js"></script>
- <script src="<?php //echo get_template_directory_uri(); ?>/assets/js/countdowncustom.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.magnific-popup.min.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/animation.js"></script>
  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/wow.min.js"></script>
@@ -159,9 +158,7 @@
      <div class="popup-inner text-center py-5">Loading...</div>
  </div>
 
- <style>
 
- </style>
 
  <?php wp_footer(); ?>
 

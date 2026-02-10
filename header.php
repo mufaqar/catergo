@@ -95,11 +95,50 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-top-wrapper">
-                    <ul>
-                        <li><span>100%</span> Secure delivery without contacting the courier</li>
-                        <li><i class="fas fa-truck"></i>Track Your Order</li>
-                    </ul>
+
+                <div>test</div>
+                   
+
+                <select id="city-selector" style="margin-left:200px">
+    <option value="">Select city</option>
+
+    <?php
+
+
+$current_location = '';
+
+// 1. If user is on a location archive → trust URL
+if (is_tax('location')) {
+    $term = get_queried_object();
+    if (!empty($term->slug)) {
+        $current_location = $term->slug;
+    }
+}
+// 2. Otherwise fallback to cookie
+elseif (!empty($_COOKIE['selected_location'])) {
+    $current_location = sanitize_text_field($_COOKIE['selected_location']);
+}
+    $locations = get_terms([
+        'taxonomy'   => 'location',
+        'hide_empty' => false,
+    ]);
+
+    foreach ($locations as $location):
+        $url = home_url('/' . $location->slug . '/');
+    ?>
+        <option
+            value="<?php echo esc_url($url); ?>"
+            <?php selected($current_location, $location->slug); ?>
+        >
+            <?php echo esc_html($location->name); ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
+
                     <div class="top-right">
+                         
+
                         <div class="search-wrp">
                             <button><i class="far fa-search"></i></button>
                             <input placeholder="Search" aria-label="Search">
@@ -163,3 +202,21 @@
             </div>
         </div>
     </header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const select = document.getElementById('city-selector');
+    if (!select) return;
+
+    select.addEventListener('change', function () {
+        if (!this.value) return;
+
+        const slug = this.value
+            .replace(window.location.origin + '/', '')
+            .replace(/\/$/, '');
+
+        document.cookie = `selected_location=${slug}; path=/; max-age=${60*60*24*30}`;
+        window.location.href = this.value;
+    });
+});
+</script>
