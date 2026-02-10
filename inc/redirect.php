@@ -58,5 +58,5 @@ add_action('template_redirect', function() {
 
 // 4️⃣ Call the function with your pages
 add_action('init', function() {
-    add_location_rewrite_for_pages(['all-caterers','menus','bestallning']);
+  //  add_location_rewrite_for_pages(['all-caterers','menus','bestallning']);
 });
