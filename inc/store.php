@@ -1,22 +1,6 @@
 <?php
 // Add this to your theme's functions.php or create a custom plugin
 
-// Create custom post type for Stores
-function create_store_post_type() {
-    register_post_type('store',
-        array(
-            'labels' => array(
-                'name' => __('Caterers'),
-                'singular_name' => __('Caterer')
-            ),
-            'public' => true,
-            'has_archive' => true,
-            'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-store',
-        )
-    );
-}
-add_action('init', 'create_store_post_type');
 
 // Create custom post type for Stores
 function create_Caterers_post_type() {
@@ -91,7 +75,7 @@ function store_assignment_meta_box_callback($post) {
     wp_nonce_field('store_assignment_nonce', 'store_assignment_nonce');
     
     $stores = get_posts(array(
-        'post_type' => 'store',
+        'post_type' => 'caterer',
         'numberposts' => -1,
         'post_status' => 'publish'
     ));
@@ -186,7 +170,7 @@ add_filter('manage_edit-product_columns', function($columns) {
     foreach ($columns as $key => $value) {
         $new_columns[$key] = $value;
         if ($key === 'product_cat') {
-            $new_columns['store'] = __('Store', 'your-textdomain');
+            $new_columns['caterer'] = __('caterer', 'your-textdomain');
         }
     }
 
@@ -195,13 +179,13 @@ add_filter('manage_edit-product_columns', function($columns) {
 
 // Fill Store column data
 add_action('manage_product_posts_custom_column', function($column, $post_id) {
-    if ($column === 'store') {
+    if ($column === 'caterer') {
         // Pull correct meta key (_assigned_store)
         $store_id = get_post_meta($post_id, '_assigned_store', true);
         if ($store_id) {
             echo '<a href="' . esc_url(get_edit_post_link($store_id)) . '">' . esc_html(get_the_title($store_id)) . '</a>';
         } else {
-            echo '<em>No store assigned</em>';
+            echo '<em>No caterer assigned</em>';
         }
     }
 }, 10, 2);
@@ -209,7 +193,7 @@ add_action('manage_product_posts_custom_column', function($column, $post_id) {
 
 // Make Store column sortable
 add_filter('manage_edit-product_sortable_columns', function($columns) {
-    $columns['store'] = 'store';
+    $columns['caterer'] = 'caterer';
     return $columns;
 });
 
@@ -234,7 +218,7 @@ function get_product_store_name($product_id = null, $linked = true) {
     if (!$store_id) return null;
 
     $store = get_post($store_id);
-    if (!$store || $store->post_type !== 'store') return null;
+    if (!$store || $store->post_type !== 'caterer') return null;
 
     $store_name = esc_html($store->post_title);
     $store_link = get_permalink($store_id);
