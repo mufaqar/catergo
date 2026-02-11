@@ -67,7 +67,10 @@ function cptui_register_my_taxes_location() {
 		"show_in_menu" => true,
 		"show_in_nav_menus" => true,
 		"query_var" => true,
-		"rewrite" => [ 'slug' => 'location', 'with_front' => true,  'hierarchical' => true, ],
+		'rewrite' => [
+            'slug' => '',         // <-- Remove the base completely
+            'with_front' => false,
+        ],
 		"show_admin_column" => true,
 		"show_in_rest" => true,
 		"show_tagcloud" => true,

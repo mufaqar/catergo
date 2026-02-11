@@ -1,14 +1,39 @@
 <?php
-/*Template Name: Home*/
+/* Template Name: Home */
 
+// REDIRECT LOGIC - MUST BE AT THE VERY TOP, BEFORE ANY OUTPUT
+if (is_front_page() || is_home()) {
+    
+    // Allow users to skip redirect with a URL parameter
+    if (!isset($_GET['skip_location_redirect']) || $_GET['skip_location_redirect'] != '1') {
+        
+        // Check if cookie exists
+        if (!empty($_COOKIE['selected_location'])) {
+            $location_slug = sanitize_text_field($_COOKIE['selected_location']);
+            
+            // Verify location exists
+            $term = get_term_by('slug', $location_slug, 'location');
+            
+            if ($term && !is_wp_error($term)) {
+                $location_url = get_term_link($term);
+                
+                if (!is_wp_error($location_url)) {
+                    wp_redirect($location_url);
+                    exit;
+                }
+            }
+        }
+    }
+}
+
+// NOW start the header and output
 get_header(); ?>
 
- <?php get_template_part('partials/home', 'sliders'); ?>
- <?php get_template_part('partials/home', 'categories'); ?>
-  <?php get_template_part('partials/home', 'banner'); ?>
- <?php get_template_part('partials/home', 'products'); ?>
- <?php //get_template_part('partials/home', 'mission'); ?>
-  <?php //get_template_part('partials/home', 'testimonials'); ?>
- <?php get_template_part('partials/home', 'booking'); ?>
+<?php 
+// Debug output - only shown if no redirect happened
+echo "Home Page Template Loaded Successfully";
+?>
+
+<!-- Rest of your home page content here -->
 
 <?php get_footer(); ?>
