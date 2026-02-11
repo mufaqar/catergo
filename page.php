@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php get_header();
+
+
+
+?>
 
 <?php $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full') ?: get_template_directory_uri() . '/assets/images/banner-bg.jpg';
 

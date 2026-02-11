@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php get_header();
+
+exit("404.php");
+
+?>
 <?php $bg_image =  get_template_directory_uri() . '/assets/images/bg-img/1.jpg';
 get_template_part('partials/content', 'breadcrumb', [
     'bg' => $bg_image

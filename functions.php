@@ -143,4 +143,3 @@ function mytheme_woocommerce_custom_wrappers() {
 add_action('wp', 'mytheme_woocommerce_custom_wrappers');
 
 
-
