@@ -204,7 +204,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // List of pages where this should run
     const allowedPages = [
         '/all-caterers/',  
-        '/menus/'   
+        '/menus/'  
+         '/home/'   
     ];
 
     // Get the current path
