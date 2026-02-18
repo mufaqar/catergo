@@ -173,12 +173,6 @@ document.getElementById('location-selector').addEventListener('change', function
 </script>
 
 
-
- </body>
-
- </html>
-
-
  <script>
 jQuery(document).ready(function($) {
     // Product popup trigger
@@ -246,3 +240,8 @@ jQuery(document).ready(function($) {
     });
 });
  </script>
+
+ </body>
+
+ </html>
+
