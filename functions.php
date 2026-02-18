@@ -9,11 +9,9 @@
     function mytheme_add_woocommerce_support() {
         add_theme_support( 'woocommerce' );
     }
-
     
     include_once('inc/class-walker-nav.php');
-   include_once('inc/extra.php');
-
+    include_once('inc/extra.php');
 	
 	// Clean up the <head>
 	function removeHeadLinks() {

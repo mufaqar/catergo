@@ -161,6 +161,17 @@
 
 
  <?php wp_footer(); ?>
+<script>
+document.getElementById('location-selector').addEventListener('change', function() {
+    var selectedLocation = this.value;
+
+    if(selectedLocation) {
+        document.cookie = "selected_location=" + selectedLocation + "; path=/; max-age=" + (30*24*60*60);
+        window.location.href = "<?php echo home_url('/location/'); ?>" + selectedLocation;
+    }
+});
+</script>
+
 
 
  </body>

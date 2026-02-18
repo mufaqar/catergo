@@ -99,10 +99,31 @@
                     <div>test</div>
 
 
-                    <select id="city-selector" style="margin-left:200px">
+                   <?php
+                    $locations = get_terms([
+                        'taxonomy' => 'location',
+                        'hide_empty' => false,
+                    ]);
 
-                       
+                    $current_cookie = $_COOKIE['selected_location'] ?? '';
+                    ?>
+
+                    <select id="location-selector">
+                        <option value="">Select Location</option>
+
+                        <?php if (!empty($locations) && !is_wp_error($locations)) : ?>
+                            <?php foreach ($locations as $location) : ?>
+                                <option value="<?php echo esc_attr($location->slug); ?>"
+                                    <?php selected($current_cookie, $location->slug); ?>>
+                                    <?php echo esc_html($location->name); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </select>
+
+
+
+
 
 
 
@@ -172,6 +193,3 @@
             </div>
         </div>
     </header>
-
-    
-
