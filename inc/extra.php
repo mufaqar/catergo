@@ -3,7 +3,7 @@
    include_once('ajax_calls.php');
    include_once('store.php');
    include_once('request.php');
-   //include_once('redirect.php');
+   include_once('redirect.php');
 
  
 
