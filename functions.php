@@ -129,10 +129,6 @@ function enqueue_ajax_contact_form_script() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_ajax_contact_form_script');
 
-
-
-
-
 // Modify WooCommerce wrappers if needed
 function mytheme_woocommerce_custom_wrappers() {
     remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
