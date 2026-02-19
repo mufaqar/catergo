@@ -1,7 +1,6 @@
 <?php
 /* Template Name: Home */
 
-
 if (is_front_page() || is_home()) {
     if (!isset($_GET['skip_location_redirect']) || $_GET['skip_location_redirect'] != '1') {
         if (!empty($_COOKIE['selected_location'])) {
