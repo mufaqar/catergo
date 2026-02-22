@@ -36,4 +36,44 @@ include_once('store.php');
 include_once('request.php');
 include_once('redirect.php');
 
+add_filter('wp_nav_menu_items', function ($items, $args) {
 
+    // Only for primary menu location (change if your theme uses a different key)
+    if (empty($args->theme_location) || $args->theme_location !== 'main') {
+        return $items;
+    }
+
+    // Get location from cookie
+    $location_slug = '';
+    if (!empty($_COOKIE['selected_location'])) {
+        $location_slug = sanitize_text_field(wp_unslash($_COOKIE['selected_location']));
+    }
+
+    // Fallback if no cookie
+    if (!$location_slug) {
+        // Either don't add anything:
+        return $items;
+
+        // Or add default (uncomment):
+        // $url = home_url('/caterrers/');
+        // $label = 'Caterers';
+    }
+
+    // Optional: validate it is a real location term
+    $term = get_term_by('slug', $location_slug, 'location');
+    if (!$term || is_wp_error($term)) {
+        return $items;
+    }
+
+    // Build URL: /{location}/caterrers
+    $url   = home_url('/' . $term->slug . '/caterers/');
+    $label = 'Caterers'; // or: 'Caterers in ' . $term->name
+
+    $new_item  = '<li class="menu-item menu-item-caterers-by-location">';
+    $new_item .= '<a href="' . esc_url($url) . '">' . esc_html($label) . '</a>';
+    $new_item .= '</li>';
+
+     // Add as FIRST item
+    return $new_item . $items;
+
+}, 10, 2);
