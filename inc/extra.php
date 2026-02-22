@@ -1,12 +1,5 @@
 <?php
 
-include_once('woo.php');
-include_once('ajax_calls.php');
-include_once('store.php');
-include_once('request.php');
-include_once('redirect.php');
-
-
 
 
 function current_location_shortcode() {
@@ -35,3 +28,12 @@ add_filter('wp_nav_menu_objects', function($items, $args) {
     }
     return $items;
 }, 10, 2);
+
+
+include_once('woo.php');
+include_once('ajax_calls.php');
+include_once('store.php');
+include_once('request.php');
+include_once('redirect.php');
+
+
