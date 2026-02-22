@@ -7,7 +7,7 @@ $term = get_queried_object();
 
 // echo $term->term_id;
 // echo $term->name;
- echo $term->slug;
+ //echo $term->slug;
 // echo $term->taxonomy;
 
 ?>
