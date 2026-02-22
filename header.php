@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -95,22 +94,17 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-top-wrapper">
-
                     <div>08-640 244 00</div>
-
-
                    <?php
                     $locations = get_terms([
                         'taxonomy' => 'location',
                         'hide_empty' => false,
                     ]);
-
                     $current_cookie = $_COOKIE['selected_location'] ?? '';
                     ?>
 
                     <select id="location-selector">
                         <option value="">Select Location</option>
-
                         <?php if (!empty($locations) && !is_wp_error($locations)) : ?>
                             <?php foreach ($locations as $location) : ?>
                                 <option value="<?php echo esc_attr($location->slug); ?>"
@@ -120,14 +114,6 @@
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </select>
-
-
-
-
-
-
-
-
 
                     <div class="top-right">
                         <div class="search-wrp">
