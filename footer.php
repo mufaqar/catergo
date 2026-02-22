@@ -167,7 +167,7 @@ document.getElementById('location-selector').addEventListener('change', function
 
     if(selectedLocation) {
         document.cookie = "selected_location=" + selectedLocation + "; path=/; max-age=" + (30*24*60*60);
-        window.location.href = "<?php echo home_url('/location/'); ?>" + selectedLocation;
+        window.location.href = "<?php echo home_url('/'); ?>" + selectedLocation;
     }
 });
 </script>

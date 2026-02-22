@@ -1,17 +1,7 @@
 <?php /* Template Name: Location Archive */ get_header(); 
 
-
-
 $term = get_queried_object();
-
-
-echo $term->slug;
-
-
-
-
-
-
+$term_name = $term->post_name;
 ?>
 
 
