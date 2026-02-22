@@ -65,7 +65,7 @@ add_action('init', function () {
         "show_admin_column"  => true,
         "show_in_rest"       => true,
         "rewrite" => [
-            "slug"       => "location",
+            "slug"       => "",
             "with_front" => false,
         ],
     ];
