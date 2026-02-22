@@ -67,10 +67,7 @@ function cptui_register_my_taxes_location() {
 		"show_in_menu" => true,
 		"show_in_nav_menus" => true,
 		"query_var" => true,
-		'rewrite' => [
-            'slug' => '',         // <-- Remove the base completely
-            'with_front' => false,
-        ],
+		"rewrite" => [ "slug" => "%location%/caterer", "with_front" => false ],
 		"show_admin_column" => true,
 		"show_in_rest" => true,
 		"show_tagcloud" => true,
@@ -340,3 +337,31 @@ function get_product_store_name($product_id = null, $linked = true) {
 }
 
 
+
+
+
+// 1) register rewrite tag so WP recognizes %location%
+add_action('init', function () {
+    add_rewrite_tag('%location%', '([^/]+)', 'location=');
+}, 5);
+
+// 2) Replace %location% in caterer permalinks
+add_filter('post_type_link', function ($permalink, $post) {
+    if ($post->post_type !== 'caterer') return $permalink;
+
+    $terms = wp_get_post_terms($post->ID, 'location');
+    if (empty($terms) || is_wp_error($terms)) {
+        return str_replace('%location%', 'location', $permalink); // fallback
+    }
+
+    return str_replace('%location%', $terms[0]->slug, $permalink);
+}, 10, 2);
+
+// 3) Add rewrite rule for the CPT single
+add_action('init', function () {
+    add_rewrite_rule(
+        '^([^/]+)/caterer/([^/]+)/?$',
+        'index.php?post_type=caterer&name=$matches[2]&location=$matches[1]',
+        'top'
+    );
+}, 20);
