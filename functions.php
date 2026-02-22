@@ -154,3 +154,30 @@ add_action('admin_bar_menu', function($wp_admin_bar) {
  
 
 
+
+/**
+ * Root location term support: /stockholm/
+ * - If a Page exists with same slug, Page wins.
+ * - If no Page but a location term exists, show location term archive.
+ */
+add_filter('request', function ($qv) {
+
+    // WP often sets pagename for /something/
+    if (!empty($qv['pagename'])) {
+        $slug = trim($qv['pagename'], '/');
+
+        // If a real Page exists, do nothing (Page wins)
+        if (get_page_by_path($slug)) {
+            return $qv;
+        }
+
+        // If location term exists, convert request to taxonomy query
+        $term = term_exists($slug, 'location');
+        if ($term) {
+            unset($qv['pagename']);
+            $qv['location'] = $slug;     // taxonomy query var
+        }
+    }
+
+    return $qv;
+});
