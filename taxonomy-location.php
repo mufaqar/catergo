@@ -1,6 +1,6 @@
 <?php get_header(); 
 
-echo "Working";
+
 
 
 $term = get_queried_object();
