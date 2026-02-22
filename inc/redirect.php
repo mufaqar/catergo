@@ -1,89 +1,133 @@
 <?php
 /**
- * ROOT location taxonomy + caterer URL by location
- * - Location term archive: /{location}/
+ * CPT + Taxonomies + Location-based Caterer URLs
+ * - Location term archive: /location/{location}/
  * - Caterer single: /{location}/caterer/{caterer}/
- *
- * IMPORTANT:
- * 1) DO NOT create Pages with the same slug as any location term.
- * 2) After adding this, flush permalinks (Settings -> Permalinks -> Save).
+ * - Pages remain normal: /about-us/ uses page.php
  */
 
 /**
- * 1) CPT caterer (stable base)
+ * 1) Register CPT: Caterer
  */
 add_action('init', function () {
-    register_post_type("caterer", [
-        "label"              => "Caterers",
-        "public"             => true,
-        "publicly_queryable" => true,
-        "show_ui"            => true,
-        "show_in_rest"       => true,
-        "has_archive"        => false,
-        "supports"           => ["title", "editor", "thumbnail"],
-        "rewrite"            => ["slug" => "caterer", "with_front" => false],
-    ]);
+    $labels = [
+        "name"          => esc_html__("Caterers", "gt_theme"),
+        "singular_name" => esc_html__("Caterer", "gt_theme"),
+    ];
+
+    $args = [
+        "label"               => esc_html__("Caterers", "gt_theme"),
+        "labels"              => $labels,
+        "public"              => true,
+        "publicly_queryable"  => true,
+        "show_ui"             => true,
+        "show_in_rest"        => true,
+        "has_archive"         => false,
+        "show_in_menu"        => true,
+        "show_in_nav_menus"   => true,
+        "exclude_from_search" => false,
+        "capability_type"     => "post",
+        "map_meta_cap"        => true,
+        "hierarchical"        => false,
+        "supports"            => ["title", "editor", "thumbnail"],
+
+        // IMPORTANT: keep CPT base stable
+        "rewrite" => [
+            "slug"       => "caterer",
+            "with_front" => false,
+        ],
+    ];
+
+    register_post_type("caterer", $args);
 }, 0);
 
+
 /**
- * 2) Taxonomy location at ROOT: /stockholm/
- *
- * We set a normal internal rewrite base (location) BUT output root links
- * and add our own root rewrite rule.
+ * 2) Register Taxonomy: Location (with a base, so Pages don't collide)
+ * URL: /location/{term}/
  */
 add_action('init', function () {
-    register_taxonomy("location", ["caterer"], [
-        "label"              => "Locations",
+    $labels = [
+        "name"          => esc_html__("Locations", "gt_theme"),
+        "singular_name" => esc_html__("Location", "gt_theme"),
+    ];
+
+    $args = [
+        "label"              => esc_html__("Locations", "gt_theme"),
+        "labels"             => $labels,
         "public"             => true,
         "publicly_queryable" => true,
         "hierarchical"       => true,
         "show_ui"            => true,
+        "show_in_menu"       => true,
+        "show_in_nav_menus"  => true,
+        "query_var"          => true,
+        "show_admin_column"  => true,
         "show_in_rest"       => true,
+        "rewrite" => [
+            "slug"       => "location",
+            "with_front" => false,
+        ],
+    ];
 
-        // Keep an internal base to avoid WP edge-cases,
-        // we'll override the *public* links to root below.
-        "rewrite" => ["slug" => "location", "with_front" => false],
-    ]);
+    register_taxonomy("location", ["caterer"], $args);
 }, 0);
 
-/**
- * 3) Make location term links ROOT:
- * /location/stockholm/  ->  /stockholm/
- */
-add_filter('term_link', function ($url, $term, $taxonomy) {
-    if ($taxonomy !== 'location') return $url;
-
-    // root URL for the term
-    return home_url('/' . $term->slug . '/');
-}, 10, 3);
 
 /**
- * 4) Root rewrite for location term archives:
- * /{location}/  -> taxonomy=location&term={location}
- *
- * NOTE: This can collide with Pages. Avoid same slugs.
+ * 3) Register Taxonomy: Caterer Types
+ * URL: /caterer_types/{term}/
  */
 add_action('init', function () {
-    add_rewrite_rule(
-        '^([^/]+)/?$',
-        'index.php?location=$matches[1]',
-        'bottom'
-    );
-}, 20);
+    $labels = [
+        "name"          => esc_html__("Types", "gt_theme"),
+        "singular_name" => esc_html__("Type", "gt_theme"),
+    ];
+
+    $args = [
+        "label"              => esc_html__("Types", "gt_theme"),
+        "labels"             => $labels,
+        "public"             => true,
+        "publicly_queryable" => true,
+        "hierarchical"       => true,
+        "show_ui"            => true,
+        "show_in_menu"       => true,
+        "show_in_nav_menus"  => true,
+        "query_var"          => true,
+        "show_admin_column"  => true,
+        "show_in_rest"       => true,
+        "rewrite" => [
+            "slug"       => "caterer_types",
+            "with_front" => false,
+        ],
+    ];
+
+    register_taxonomy("caterer_types", ["caterer"], $args);
+}, 0);
+
 
 /**
- * 5) Caterer single URLs:
- * /{location}/caterer/{caterer}/
+ * 4) Caterer single URL format:
+ * /{location-slug}/caterer/{caterer-slug}/
+ *
+ * We do two things:
+ *  - Generate links in that format (post_type_link)
+ *  - Add a rewrite rule so WP resolves that URL to the caterer post (add_rewrite_rule)
  */
+
+// Generate pretty permalinks for caterers
 add_filter('post_type_link', function ($permalink, $post) {
     if ($post->post_type !== 'caterer') return $permalink;
 
+    // Get first assigned location term (or fallback)
     $terms = wp_get_post_terms($post->ID, 'location');
     $location_slug = (!empty($terms) && !is_wp_error($terms)) ? $terms[0]->slug : 'location';
 
+    // Build desired URL
     return home_url("/{$location_slug}/caterer/{$post->post_name}/");
 }, 10, 2);
 
+// Add rewrite rule for the custom caterer permalink
 add_action('init', function () {
     add_rewrite_rule(
         '^([^/]+)/caterer/([^/]+)/?$',
@@ -92,11 +136,11 @@ add_action('init', function () {
     );
 }, 20);
 
+
 /**
- * 6) IMPORTANT: Flush permalinks once
- * Recommended: WP Admin -> Settings -> Permalinks -> Save
- *
- * If you can't access admin, set to true for ONE request, load once, then set false.
+ * 5) OPTIONAL: One-time flush helper
+ * After you paste code, go to Settings > Permalinks > Save Changes (recommended)
+ * If you can't do that, set this to true for ONE reload, then set back to false.
  */
 define('GT_FLUSH_REWRITES_ONCE', false);
 
@@ -107,3 +151,13 @@ add_action('init', function () {
 }, 99);
 
 
+/**
+ * 6) OPTIONAL DEBUG: log template used when needed
+ * Uncomment temporarily if you want to confirm page.php vs 404.php etc.
+ */
+/*
+add_filter('template_include', function($template){
+    error_log('TEMPLATE: ' . $template . ' | URL=' . $_SERVER['REQUEST_URI']);
+    return $template;
+});
+*/
