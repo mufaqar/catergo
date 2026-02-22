@@ -1,7 +1,6 @@
 <?php
 /* Template Name: HomePage */
 
-
     if (!isset($_GET['skip_location_redirect']) || $_GET['skip_location_redirect'] != '1') {
         if (!empty($_COOKIE['selected_location'])) {
             $location_slug = sanitize_text_field($_COOKIE['selected_location']);
