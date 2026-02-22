@@ -8,13 +8,15 @@ $term = get_queried_object();
 // echo $term->term_id;
 // echo $term->name;
  //echo $term->slug;
-// echo $term->taxonomy;
+echo $term->taxonomy;
+
+
 
 ?>
 
 
  
-    <?php get_template_part('partials/home', 'sliders'); ?>
+ <?php get_template_part('partials/home', 'sliders'); ?>
  <?php get_template_part('partials/home', 'categories'); ?>
   <?php get_template_part('partials/home', 'banner'); ?>
  <?php get_template_part('partials/home', 'products'); ?>
