@@ -48,7 +48,7 @@ add_action('init', function () {
  */
 add_action('init', function () {
     $labels = [
-        "name"          => esc_html__("Locations", "gt_theme"),
+        "name"          => esc_html__("Locations 123", "gt_theme"),
         "singular_name" => esc_html__("Location", "gt_theme"),
     ];
 
@@ -150,25 +150,3 @@ add_action('init', function () {
 }, 99);
 
 
-/**
- * Root taxonomy resolver for Location:
- * - If a Page exists with same slug => Page wins
- * - Else if a location term exists => show taxonomy archive
- */
-add_filter('request', function ($qv) {
-    if (!empty($qv['pagename']) && empty($qv['location'])) {
-        $slug = trim($qv['pagename'], '/');
-
-        // If a Page exists, keep it as a page request
-        if (get_page_by_path($slug)) {
-            return $qv;
-        }
-
-        // If a location term exists, convert to taxonomy request
-        if (term_exists($slug, 'location')) {
-            unset($qv['pagename']);
-            $qv['location'] = $slug;
-        }
-    }
-    return $qv;
-});
