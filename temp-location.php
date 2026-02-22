@@ -1,19 +1,14 @@
 <?php /* Template Name: Location Archive */ get_header(); 
 
 
-if (is_page()) {
-    $slug = get_query_var('pagename');
-    echo $slug;
-}
 
 $term = get_queried_object();
 
-// echo $term->term_id;
-// echo $term->name;
- //echo $term->slug;
-//echo $term->taxonomy;
 
-print_r($term);
+echo $term->slug;
+
+
+
 
 
 
