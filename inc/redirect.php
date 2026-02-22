@@ -65,14 +65,13 @@ add_action('init', function () {
         "show_admin_column"  => true,
         "show_in_rest"       => true,
         "rewrite" => [
-            "slug"       => "location",
+            "slug"       => "",
             "with_front" => false,
         ],
     ];
 
     register_taxonomy("location", ["caterer"], $args);
 }, 0);
-
 
 /**
  * 3) Register Taxonomy: Caterer Types
@@ -152,12 +151,24 @@ add_action('init', function () {
 
 
 /**
- * 6) OPTIONAL DEBUG: log template used when needed
- * Uncomment temporarily if you want to confirm page.php vs 404.php etc.
+ * Root taxonomy resolver for Location:
+ * - If a Page exists with same slug => Page wins
+ * - Else if a location term exists => show taxonomy archive
  */
-/*
-add_filter('template_include', function($template){
-    error_log('TEMPLATE: ' . $template . ' | URL=' . $_SERVER['REQUEST_URI']);
-    return $template;
+add_filter('request', function ($qv) {
+    if (!empty($qv['pagename']) && empty($qv['location'])) {
+        $slug = trim($qv['pagename'], '/');
+
+        // If a Page exists, keep it as a page request
+        if (get_page_by_path($slug)) {
+            return $qv;
+        }
+
+        // If a location term exists, convert to taxonomy request
+        if (term_exists($slug, 'location')) {
+            unset($qv['pagename']);
+            $qv['location'] = $slug;
+        }
+    }
+    return $qv;
 });
-*/

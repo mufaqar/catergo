@@ -137,21 +137,4 @@ function mytheme_woocommerce_custom_wrappers() {
 add_action('wp', 'mytheme_woocommerce_custom_wrappers');
 
 
-add_filter('template_include', function($template) {
-    echo '<!-- TEMPLATE: ' . $template . ' -->';
-    return $template;
-});
-
-add_action('admin_bar_menu', function($wp_admin_bar) {
-    if (!is_admin()) {
-        global $template;
-        $wp_admin_bar->add_node([
-            'id'    => 'current-template',
-            'title' => basename($template),
-        ]);
-    }
-}, 100);
- 
-
-
 
