@@ -155,28 +155,3 @@ add_action('admin_bar_menu', function($wp_admin_bar) {
 
 
 
-/**
- * If /{slug}/ matches a location term, treat it as taxonomy archive instead of a Page 404.
- * If a real Page exists with same slug, the Page wins.
- */
-add_filter('request', function ($qv) {
-
-    // WP sets pagename for /something/
-    if (!empty($qv['pagename']) && empty($qv['location'])) {
-        $slug = trim($qv['pagename'], '/');
-
-        // If a Page exists with this slug, let WordPress load page.php
-        if (get_page_by_path($slug)) {
-            return $qv;
-        }
-
-        // If a location term exists, convert to taxonomy query
-        $term = term_exists($slug, 'location');
-        if ($term) {
-            unset($qv['pagename']);
-            $qv['location'] = $slug; // taxonomy query var for 'location'
-        }
-    }
-
-    return $qv;
-});
