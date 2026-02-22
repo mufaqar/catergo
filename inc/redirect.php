@@ -47,32 +47,19 @@ add_action('init', function () {
  * URL: /location/{term}/
  */
 add_action('init', function () {
-    $labels = [
-        "name"          => esc_html__("Locations 123", "gt_theme"),
-        "singular_name" => esc_html__("Location", "gt_theme"),
-    ];
-
-    $args = [
-        "label"              => esc_html__("Locations", "gt_theme"),
-        "labels"             => $labels,
-        "public"             => true,
-        "publicly_queryable" => true,
-        "hierarchical"       => true,
-        "show_ui"            => true,
-        "show_in_menu"       => true,
-        "show_in_nav_menus"  => true,
-        "query_var"          => true,
-        "show_admin_column"  => true,
-        "show_in_rest"       => true,
-        "rewrite" => [
-            "slug"       => "/",
-            "with_front" => false,
+    register_taxonomy('location', ['caterer'], [
+        'label'        => __('Locations', 'gt_theme'),
+        'public'       => true,
+        'hierarchical' => true,
+        'show_ui'      => true,
+        'show_in_rest' => true,
+        'query_var'    => true,
+        'rewrite'      => [
+            'slug'       => 'location', // keep internal base stable
+            'with_front' => false,
         ],
-    ];
-
-    register_taxonomy("location", ["caterer"], $args);
+    ]);
 }, 0);
-
 /**
  * 3) Register Taxonomy: Caterer Types
  * URL: /caterer_types/{term}/
@@ -146,5 +133,44 @@ define('GT_FLUSH_REWRITES_ONCE', false);
 add_action('init', function () {
     if (defined('GT_FLUSH_REWRITES_ONCE') && GT_FLUSH_REWRITES_ONCE) {
         flush_rewrite_rules(false);
+    }
+}, 99);
+
+add_filter('term_link', function ($url, $term, $taxonomy) {
+    if ($taxonomy !== 'location') return $url;
+    return home_url('/' . $term->slug . '/'); // /stockholm/
+}, 10, 3);
+
+
+// Rewrite: /{slug}/ -> taxonomy=location&term={slug}
+add_action('init', function () {
+    add_rewrite_rule(
+        '^([^/]+)/?$',
+        'index.php?location=$matches[1]',
+        'bottom'
+    );
+}, 20);
+
+// Resolver: if WP thinks it's a page, convert to location term if term exists
+add_filter('request', function ($qv) {
+    if (!empty($qv['pagename']) && empty($qv['location'])) {
+        $slug = trim($qv['pagename'], '/');
+
+        // If a real Page exists, let Page win
+        if (get_page_by_path($slug)) return $qv;
+
+        // If location term exists, treat as taxonomy request
+        if (term_exists($slug, 'location')) {
+            unset($qv['pagename']);
+            $qv['location'] = $slug;
+        }
+    }
+    return $qv;
+});
+
+add_action('init', function () {
+    if (!get_option('gt_location_root_flushed')) {
+        flush_rewrite_rules(false);
+        update_option('gt_location_root_flushed', 1);
     }
 }, 99);
