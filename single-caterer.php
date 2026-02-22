@@ -32,9 +32,7 @@ if (have_posts()) :
 
                 <div class="col-md-10 col-sm-9">
                     <div class="store-info">
-                        <div class="store-meta small text-muted mb-1">
-                            Pakistani • BBQ • Karahi & Handi
-                        </div>
+                        
 
                         <h1 class="store-title fw-bold mb-2">
                             <?php echo esc_html(get_the_title()); ?>
@@ -43,6 +41,14 @@ if (have_posts()) :
                         <div class="store-description text-muted mb-3">
                             <?php the_content(); ?>
                         </div>
+
+                         <div class="store-meta small text-muted mb-1">
+                          Leveranstider : <?php echo get_post_meta($store_id, 'Leveranstider', true) ?: 'Not specified'; ?>
+                        </div>
+                         <div class="store-meta small text-muted mb-1">
+                         Leverans från : <?php echo get_post_meta($store_id, 'leverans_fran', true) ?: 'Not specified'; ?>
+                        </div>
+
 
                         <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>"
                             class="btn btn-outline-secondary btn-sm">
