@@ -48,18 +48,16 @@ add_action('init', function () {
  */
 add_action('init', function () {
     register_taxonomy('location', ['caterer'], [
-        'label'        => __('Locations', 'gt_theme'),
-        'public'       => true,
+        'label' => __('Locations', 'gt_theme'),
+        'public' => true,
         'hierarchical' => true,
-        'show_ui'      => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
         'show_in_rest' => true,
-        'query_var'    => true,
-        'rewrite'      => [
-            'slug'       => 'location', // keep internal base stable
-            'with_front' => false,
-        ],
+        'rewrite' => false, // IMPORTANT: disable default rewrite
     ]);
 }, 0);
+
 /**
  * 3) Register Taxonomy: Caterer Types
  * URL: /caterer_types/{term}/
@@ -136,41 +134,12 @@ add_action('init', function () {
     }
 }, 99);
 
-add_filter('term_link', function ($url, $term, $taxonomy) {
-    if ($taxonomy !== 'location') return $url;
-    return home_url('/' . $term->slug . '/'); // /stockholm/
-}, 10, 3);
 
-
-// Rewrite: /{slug}/ -> taxonomy=location&term={slug}
 add_action('init', function () {
+    // Root-level term (non-hierarchical URL style)
     add_rewrite_rule(
         '^([^/]+)/?$',
         'index.php?location=$matches[1]',
         'bottom'
     );
 }, 20);
-
-// Resolver: if WP thinks it's a page, convert to location term if term exists
-add_filter('request', function ($qv) {
-    if (!empty($qv['pagename']) && empty($qv['location'])) {
-        $slug = trim($qv['pagename'], '/');
-
-        // If a real Page exists, let Page win
-        if (get_page_by_path($slug)) return $qv;
-
-        // If location term exists, treat as taxonomy request
-        if (term_exists($slug, 'location')) {
-            unset($qv['pagename']);
-            $qv['location'] = $slug;
-        }
-    }
-    return $qv;
-});
-
-add_action('init', function () {
-    if (!get_option('gt_location_root_flushed')) {
-        flush_rewrite_rules(false);
-        update_option('gt_location_root_flushed', 1);
-    }
-}, 99);
