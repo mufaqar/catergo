@@ -1,7 +1,7 @@
 <?php get_header();
 
 
-exit("I;m page.php");
+
 
 ?>
 
