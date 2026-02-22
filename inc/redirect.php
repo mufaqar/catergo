@@ -47,16 +47,32 @@ add_action('init', function () {
  * URL: /location/{term}/
  */
 add_action('init', function () {
-    register_taxonomy('location', ['caterer'], [
-        'label' => __('Locations', 'gt_theme'),
-        'public' => true,
-        'hierarchical' => true,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'show_in_rest' => true,
-        'rewrite' => false, // IMPORTANT: disable default rewrite
-    ]);
+    $labels = [
+        "name"          => esc_html__("Locations", "gt_theme"),
+        "singular_name" => esc_html__("Location", "gt_theme"),
+    ];
+
+    $args = [
+        "label"              => esc_html__("Locations", "gt_theme"),
+        "labels"             => $labels,
+        "public"             => true,
+        "publicly_queryable" => true,
+        "hierarchical"       => true,
+        "show_ui"            => true,
+        "show_in_menu"       => true,
+        "show_in_nav_menus"  => true,
+        "query_var"          => true,
+        "show_admin_column"  => true,
+        "show_in_rest"       => true,
+        "rewrite" => [
+            "slug"       => "location",
+            "with_front" => false,
+        ],
+    ];
+
+    register_taxonomy("location", ["caterer"], $args);
 }, 0);
+
 
 /**
  * 3) Register Taxonomy: Caterer Types
@@ -135,11 +151,13 @@ add_action('init', function () {
 }, 99);
 
 
-add_action('init', function () {
-    // Root-level term (non-hierarchical URL style)
-    add_rewrite_rule(
-        '^([^/]+)/?$',
-        'index.php?location=$matches[1]',
-        'bottom'
-    );
-}, 20);
+/**
+ * 6) OPTIONAL DEBUG: log template used when needed
+ * Uncomment temporarily if you want to confirm page.php vs 404.php etc.
+ */
+/*
+add_filter('template_include', function($template){
+    error_log('TEMPLATE: ' . $template . ' | URL=' . $_SERVER['REQUEST_URI']);
+    return $template;
+});
+*/
