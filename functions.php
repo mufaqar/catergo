@@ -138,3 +138,6 @@ add_action('wp', 'mytheme_woocommerce_custom_wrappers');
 
 
 
+add_action('init', function () {
+    flush_rewrite_rules(false);
+}, 99);
