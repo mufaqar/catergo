@@ -20,5 +20,4 @@
 <?php else : ?>
     <h2><?php _e('Nothing Found','text_domain'); ?></h2>
 <?php endif; ?>
-
 <?php get_footer(); ?>
