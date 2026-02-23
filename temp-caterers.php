@@ -43,7 +43,7 @@ if (!$location && !empty($_COOKIE['selected_location'])) {
                 <div class="col-md-10 col-sm-9">
                     <div class="store-header">
                         <div class="store-meta small text-muted mb-1">
-                            Pakistani • BBQ • Karahi & Handi
+                            <?php echo $location; ?>
                         </div>
                         <h2 class="store-title mb-1">
                             <a href="<?php echo get_permalink($store->ID); ?>"
