@@ -348,7 +348,6 @@ h6 {
   margin: 0px;
   padding: 0;
   color: var(--header);
-  text-transform: uppercase;
   transition: all 0.4s ease-in-out;
 }
 
@@ -1018,7 +1017,29 @@ input.main-search-input::placeholder {
   align-items: center;
   border-left: 1px solid var(--border);
   padding-left: 25px;
+  width: 33%;
 }
+
+.header-top-wrapper .top-left {
+  display: flex;
+  align-items: center;
+
+  padding-left: 25px;
+  width: 33%;
+  justify-content: left;
+}
+
+
+.header-top-wrapper .top-center {
+  display: flex;
+  align-items: center;
+
+  padding-left: 25px;
+  width: 33%;
+  justify-content: center;
+}
+
+
 .header-top-wrapper .top-right .search-wrp input {
   position: relative;
   background-color: transparent;

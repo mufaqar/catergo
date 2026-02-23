@@ -1,11 +1,6 @@
  <!-- Footer Section Start -->
  <footer class="footer-section fix section-bg">
-     <div class="burger-shape">
-         <img src="<?php echo get_template_directory_uri(); ?>/assets/images//burger-shape-3.png" alt="burger-shape">
-     </div>
-     <div class="fry-shape">
-         <img src="<?php echo get_template_directory_uri(); ?>/assets/images//fry-shape-2.png" alt="burger-shape">
-     </div>
+    
      <div class="container">
          <div class="footer-widgets-wrapper">
              <div class="row">
