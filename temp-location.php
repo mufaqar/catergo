@@ -211,24 +211,77 @@ $term_slug = $term->post_name;
 
         <div class="row g-4">
 
-        
+            <?php 
+
+        // Your query (edit as needed)
+            $args = [
+            'post_type'      => 'product',
+            'post_status'    => 'publish',
+            'posts_per_page' => 4,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+
+            // Optional: filter by category slug:
+            // 'tax_query' => [[
+            //   'taxonomy' => 'product_cat',
+            //   'field'    => 'slug',
+            //   'terms'    => ['food-trucks'],
+            // ]],
+            ];
+
+            $q = new WP_Query($args);
+            ?>
+             <?php if ($q->have_posts()) : ?>
+      <?php while ($q->have_posts()) : $q->the_post(); ?>
+        <?php
+          global $product;
+          if ( ! $product instanceof WC_Product ) continue;
+
+          $id    = $product->get_id();
+          $title = get_the_title();
+          $url   = get_permalink();
+
+          $img = get_the_post_thumbnail_url($id, 'large');
+          if (!$img) $img = wc_placeholder_img_src('large');
+
+          // Example “meta line”: use first category name (replace with city field if you have one)
+          $terms = get_the_terms($id, 'product_cat');
+          $metaLine = (!is_wp_error($terms) && !empty($terms)) ? $terms[0]->name : 'Product';
+
+          $avg   = (float) $product->get_average_rating();
+          $count = (int) $product->get_rating_count();
+
+          $filled = (int) round($avg);
+          $stars  = str_repeat('★', $filled) . str_repeat('☆', max(0, 5 - $filled));
+        ?>
+
+
             <div class="col-sm-6 col-lg-3 reveal">
-                <div class="card supplier-card h-100">
-                    <div class="supplier-img"
-                        style="background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&h=650&fit=crop&q=80');">
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="fw-bold text-deep mb-1">Street Gourmet Truck</div>
-                        <div class="text-muted small mb-3">Food Truck • Stockholm</div>
-                        <div class="d-flex align-items-center gap-2 fw-semibold" style="color:var(--accent);">
-                            <span aria-hidden="true">★★★★★</span>
-                            <span class="text-muted fw-normal">4.9 (127 recensioner)</span>
-                        </div>
-                    </div>
-                </div>
+          <a href="<?php echo esc_url($url); ?>" class="card supplier-card h-100 text-decoration-none">
+            <div class="supplier-img"
+                 style="background-image:url('<?php echo esc_url($img); ?>');">
             </div>
 
-            
+            <div class="card-body p-4">
+              <div class="fw-bold text-deep mb-1"><?php echo esc_html($title); ?></div>
+              <div class="text-muted small mb-3"><?php echo esc_html($metaLine); ?></div>
+
+              <div class="d-flex align-items-center gap-2 fw-semibold" style="color:var(--accent);">
+                <span aria-hidden="true"><?php echo esc_html($count ? $stars : '☆☆☆☆☆'); ?></span>
+                <span class="text-muted fw-normal">
+                  <?php echo $count ? esc_html(number_format($avg, 1) . " ({$count} reviews)") : esc_html('No reviews yet'); ?>
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+            <?php endwhile; wp_reset_postdata(); ?>
+            <?php else: ?>
+            <p>No products found.</p>
+            <?php endif; ?>
+
+
+
         </div>
     </div>
 </section>
