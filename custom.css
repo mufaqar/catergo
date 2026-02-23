@@ -1,3 +1,5 @@
+
+
 @media (min-width: 1400px) {
   .container,
   .container-lg,
@@ -34,4 +36,375 @@
 }
 .woocommerce .quantity .qty {
   color: black !important;
+}
+
+:root {
+  --primary-blue: #2748e6;
+  --deep-blue: #1a2f9e;
+  --accent-orange: #6a32cc;
+  --warm-orange: #8b4fe0;
+  --fresh-green: #4caf50;
+  --light-green: #81c784;
+  --cream: #fff8f0;
+  --light-gray: #f5f5f5;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #333333;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+}
+
+.font-display {
+  font-family: "Playfair Display", serif;
+}
+
+.text-deep {
+  color: var(--deep-blue) !important;
+}
+
+.text-accent {
+  color: var(--accent) !important;
+}
+
+.bg-accent {
+  background: var(--accent-orange) !important;
+}
+
+/* Brand-ish buttons */
+.btn-accent {
+  --bs-btn-bg: var(--accent-orange);
+  --bs-btn-border-color: var(--accent-orange);
+  --bs-btn-hover-bg: var(--warm-orange);
+  --bs-btn-hover-border-color: var(--warm-orange);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-color: #fff;
+  border-radius: 999px;
+  box-shadow: 0 0.5rem 1.5rem rgba(106, 50, 204, 0.25);
+}
+
+.btn-outline-accent {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: rgba(255, 255, 255, 1);
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: #fff;
+  --bs-btn-hover-color: var(--accent);
+  border-radius: 999px;
+}
+
+/* Location segmented */
+.segmented {
+  background: #f5f5f5;
+  border-radius: 999px;
+  padding: 0.35rem;
+}
+
+.segmented .btn {
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+}
+
+.segmented .btn.active {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: #fff;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--cream) 0%, #fff 100%);
+  position: relative;
+  overflow: hidden;
+  padding-top: 6.5rem;
+  /* space for fixed navbar */
+  padding-bottom: 3rem;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -45%;
+  right: -18%;
+  width: 780px;
+  height: 780px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(106, 50, 204, 0.08) 0%,
+    transparent 70%
+  );
+  animation: float 20s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-50px, 50px) rotate(180deg);
+  }
+}
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  color: var(--accent);
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.25rem;
+  height: 0.75rem;
+  background: rgba(106, 50, 204, 0.2);
+  z-index: -1;
+  transform: skewX(-12deg);
+}
+
+.hero-img {
+  border-radius: 1.75rem;
+  height: 600px;
+  object-fit: cover;
+  box-shadow: 0 1.25rem 3.75rem rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .hero-img {
+    height: 420px;
+  }
+}
+
+.floating-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.75rem 2.5rem rgba(0, 0, 0, 0.1);
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+.floating-card-1 {
+  top: 10%;
+  right: -4%;
+}
+
+.floating-card-2 {
+  bottom: 15%;
+  left: -4%;
+  animation-delay: 2s;
+}
+
+@media (max-width: 991.98px) {
+  .floating-card {
+    display: none;
+  }
+}
+
+/* Sections */
+.section-title {
+  font-size: clamp(2rem, 2.6vw + 1rem, 3rem);
+  line-height: 1.15;
+}
+
+.section-sub {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Cards */
+.cat-card {
+  border: 0;
+  background: var(--cream);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.15);
+}
+
+.cat-img {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.cat-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+.supplier-card {
+  border: 0;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+  background: #fff;
+}
+
+.supplier-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.9rem 2.5rem rgba(0, 0, 0, 0.14);
+}
+
+.supplier-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Why choose */
+.why {
+  background: var(--primary-blue);
+  color: #fff;
+}
+
+.why .section-sub {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.benefit-icon {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  font-size: 2rem;
+  margin: 0 auto 1rem;
+}
+
+/* Testimonials */
+.testimonial {
+  background: var(--cream);
+  border-radius: 1.5rem;
+  border: 0;
+}
+
+.quote {
+  font-size: 4rem;
+  color: var(--accent);
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.cta-section {
+  padding: 6rem 5%;
+  background: linear-gradient(135deg, var(--accent-orange), var(--warm-orange));
+  color: white;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.cta-section p {
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  opacity: 0.95;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-white {
+  background: white;
+  color: var(--accent-orange);
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.1rem;
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  padding: 1rem 2.5rem;
+  border: 2px solid white;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.1rem;
+}
+.btn-outline:hover {
+  background: white;
+  color: var(--accent-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.btn-white:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.step-number {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--accent-orange), var(--warm-orange));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 auto 2rem;
+  font-family: "Playfair Display", serif;
+  box-shadow: 0 10px 30px rgba(106, 50, 204, 0.3);
+}
+
+/* Reveal (IntersectionObserver toggles .in) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
