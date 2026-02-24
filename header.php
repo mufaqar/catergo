@@ -170,7 +170,7 @@
                         <div class="header-right d-flex justify-content-end align-items-center">
                             <?php get_template_part('partials/cart', 'widget'); ?>
                             <div class="header-button">
-                                <a href="<?php echo home_url('/contact-us'); ?>" class="theme-btn bg-red-2">BEGÄR OFFERT</a>
+                                <a href="<?php echo home_url('/begar-offert'); ?>" class="theme-btn bg-red-2">BEGÄR OFFERT</a>
                             </div>
                             <div class="header__hamburger d-xl-block my-auto">
                                 <div class="sidebar__toggle">
