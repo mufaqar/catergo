@@ -125,16 +125,10 @@
                     </div>
 
                     <div class="top-right">
-                        <div class="search-wrp">
-                            <button><i class="far fa-search"></i></button>
-                            <input placeholder="Search" aria-label="Search">
-                        </div>
-                        <div class="social-icon d-flex align-items-center">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-vimeo-v"></i></a>
-                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                        </div>
+                        <ul>
+                        
+                            <li><a href="<?php echo home_url('/BliLeverntör'); ?>">Bli Leverntör</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
