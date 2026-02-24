@@ -66,8 +66,8 @@ add_filter('wp_nav_menu_items', function ($items, $args) {
     }
 
     // Build URL: /{location}/caterrers
-    $url   = home_url('/' . $term->slug . '/caterers/');
-    $label = 'Caterers'; // or: 'Caterers in ' . $term->name
+    $url   = home_url('/' . $term->slug . '/catering/');
+    $label = 'catering'; // or: 'Caterers in ' . $term->name
 
     $new_item  = '<li class="menu-item menu-item-caterers-by-location">';
     $new_item .= '<a href="' . esc_url($url) . '">' . esc_html($label) . '</a>';

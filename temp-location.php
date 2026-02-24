@@ -5,8 +5,66 @@ $term_title = $term->post_title;
 $term_slug = $term->post_name;
 
 
+// echo $term_slug;
 
+// $location_slug = 'stockholm';
 
+// // 1️⃣ Get caterer IDs by location
+// $caterers = new WP_Query([
+//     'post_type'      => 'caterer',
+//     'post_status'    => 'publish',
+//     'fields'         => 'ids',
+//     'posts_per_page' => -1,
+//     'tax_query'      => [[
+//         'taxonomy' => 'location',
+//         'field'    => 'slug',
+//         'terms'    => $location_slug,
+//     ]]
+// ]);
+
+// $caterer_ids = $caterers->posts;
+
+// print_r($caterer_ids);
+
+// // Stop early if no caterers found
+// if (empty($caterer_ids)) {
+//     echo 'No caterers found.';
+//     return;
+// }
+
+// // 2️⃣ Build meta query safely
+// $meta_query = ['relation' => 'OR'];
+
+// foreach ($caterer_ids as $id) {
+//     $meta_query[] = [
+//         'key'     => '_assigned_store',
+//         'value'   => '"' . absint($id) . '"',
+//         'compare' => 'LIKE',
+//     ];
+// }
+
+// // 3️⃣ Get products
+// $products = new WP_Query([
+//     'post_type'      => 'product',
+//     'post_status'    => 'publish',
+//     'posts_per_page' => -1,
+//     'meta_query'     => $meta_query,
+// ]);
+
+// if ($products->have_posts()) {
+
+//     while ($products->have_posts()) {
+//         $products->the_post();
+//         echo get_the_title() . '<br>';
+//     }
+
+//     wp_reset_postdata();
+
+// } else {
+//     echo 'No products found.';
+// }
+
+// echo "<br><br><br><br><br><br><br><br><br><br>----------";
 
 // $term = get_queried_object();
 
