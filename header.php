@@ -126,7 +126,7 @@
 
                     <div class="top-right">
                         <ul>                        
-                            <li><a href="<?php echo home_url('/blileverntör'); ?>">Bli Leverntör</a></li>
+                            <li><a href="<?php echo home_url('/bli-leverntor'); ?>">Bli Leverntör</a></li>
                         </ul>
                     </div>
                 </div>
