@@ -1,6 +1,16 @@
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  max-width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+}
 
+@media (min-width: 992px) {
 
-@media (min-width: 1400px) {
   .container,
   .container-lg,
   .container-md,
@@ -28,12 +38,15 @@
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
+
 .plusicon {
   font-size: 32px;
 }
+
 .food-menu-content {
   max-width: 60%;
 }
+
 .woocommerce .quantity .qty {
   color: black !important;
 }
@@ -127,16 +140,15 @@
   width: 780px;
   height: 780px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(106, 50, 204, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(106, 50, 204, 0.08) 0%,
+      transparent 70%);
   animation: float 20s ease-in-out infinite;
   z-index: 0;
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translate(0, 0) rotate(0deg);
@@ -187,6 +199,7 @@
 }
 
 @keyframes floatCard {
+
   0%,
   100% {
     transform: translateY(0);
@@ -208,9 +221,19 @@
   animation-delay: 2s;
 }
 
+.store-item {
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 40px;
+}
+
 @media (max-width: 991.98px) {
   .floating-card {
     display: none;
+  }
+
+  .store-item {
+    padding: 20px;
   }
 }
 
@@ -252,11 +275,9 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 100%);
 }
 
 .supplier-card {
@@ -368,12 +389,14 @@
   font-family: "Work Sans", sans-serif;
   font-size: 1.1rem;
 }
+
 .btn-outline:hover {
   background: white;
   color: var(--accent-orange);
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
+
 .btn-white:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -408,16 +431,17 @@
     opacity 0.6s ease,
     transform 0.6s ease;
 }
-.loc-btn{
+
+.loc-btn {
   background-color: var(--primary-blue);
-    color: var(--cream);
-    border-radius: 7px;
-    padding: 7px 15px;
-    font-size: 16px;
-    line-height: 1.1;
-    font-weight: 600;
+  color: var(--cream);
+  border-radius: 7px;
+  padding: 7px 15px;
+  font-size: 16px;
+  line-height: 1.1;
+  font-weight: 600;
 }
 
 .loc-btn:hover {
-    background-color: #000;
+  background-color: #000;
 }

@@ -18,16 +18,20 @@ get_template_part('partials/content', 'breadcrumb', [
     <div class="divider"></div>
     <div class="container">
         <div class="row g-5 g-md-4 g-xxl-5">
-            <?php if (have_posts()) : ?>
+            <?php if (have_posts()): ?>
                 <div class="col-12 col-md-7 col-lg-8">
-                    <?php while (have_posts()) : the_post(); ?>
+                    <?php while (have_posts()):
+                        the_post(); ?>
                         <div class="single-blog-content wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="200ms">
                             <!-- Post Thumbnail -->
                             <div class="col-12 mb-4">
-                                <?php if (has_post_thumbnail()) : ?>
-                                    <img class="rounded-4" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>" alt="<?php the_title_attribute(); ?>">
-                                <?php else : ?>
-                                    <img class="rounded-4" src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-img/127.jpg" alt="Default Image">
+                                <?php if (has_post_thumbnail()): ?>
+                                    <img class="rounded-4" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>"
+                                        alt="<?php the_title_attribute(); ?>">
+                                <?php else: ?>
+                                    <img class="rounded-4"
+                                        src="<?php echo get_template_directory_uri(); ?>/assets/images/bg-img/127.jpg"
+                                        alt="Default Image">
                                 <?php endif; ?>
                             </div>
 
@@ -108,14 +112,17 @@ get_template_part('partials/content', 'breadcrumb', [
                         <div class="blog-widget">
                             <div class="h4 fw-bold mb-4">Follow Us</div>
                             <div class="follow-nav">
-                                <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i class="ti ti-brand-facebook"></i></a>
-                                <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i class="ti ti-brand-tiktok"></i></a>
-                                <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i class="ti ti-brand-instagram"></i></a>
+                                <a href="https://www.facebook.com/profile.php?id=61577812495327" target="_blank"><i
+                                        class="ti ti-brand-facebook"></i></a>
+                                <a href="https://www.tiktok.com/@gotriptoday" target="_blank"><i
+                                        class="ti ti-brand-tiktok"></i></a>
+                                <a href="https://www.instagram.com/gotriptodaycom/" target="_blank"><i
+                                        class="ti ti-brand-instagram"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php else : ?>
+            <?php else: ?>
                 <div class="col-12">
                     <p><?php esc_html_e('No posts found in this category.', 'text-domain'); ?></p>
                 </div>
