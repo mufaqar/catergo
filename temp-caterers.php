@@ -18,7 +18,7 @@ get_template_part('partials/content', 'breadcrumb', [
     <div class="container">
         <div class="row g-5">
             <!-- Sidebar -->
-            <div class="col-xl-3 col-lg-4 order-2 order-md-1 mt-5">
+            <div class="col-xl-3 col-lg-4 order-1 order-md-1 mt-5">
                 <div class="main-sidebar">
                     <!-- WooCommerce Categories -->
                     <div class="single-sidebar-widget">
@@ -155,7 +155,7 @@ get_template_part('partials/content', 'breadcrumb', [
             </div>
 
             <!-- Main Content -->
-            <div class="col-xl-9 col-lg-8 order-1 order-md-2">
+            <div class="col-xl-9 col-lg-8 order-2 order-md-2">
                 <div class="row">
                     <?php
                     $stores = get_posts([
