@@ -432,20 +432,31 @@
     transform 0.6s ease;
 }
 
-.loc-btn {
-  background-color: var(--primary-blue);
-  color: var(--cream);
-  border-radius: 7px;
-  padding: 7px 15px;
-  font-size: 16px;
-  line-height: 1.1;
-  font-weight: 600;
+.loc_div #locationForm {
+  background-color: #fbfbfb;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 50px;
 }
 
-.loc-btn:hover {
-  background-color: #000;
+.loc-radio input {
+  display: none;
 }
-.loc-btn.active {
-    background: #000;
-    color: #fff;
+
+.loc-radio span {
+  display: inline-block;
+  padding: 5px 40px;
+  border-radius: 50px;
+  background: transparent;
+  transition: 0.3s;
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.loc-radio input:checked+span {
+  background: #2748e6;
+  color: #fff;
 }

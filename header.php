@@ -115,17 +115,26 @@
                     $current_cookie = $_COOKIE['selected_location'] ?? '';
                     ?>
 
-                    <div class="top-center loc_btns">
+                   <div class="top-center loc_div">
                         <?php if (!empty($locations) && !is_wp_error($locations)): ?>
-                            <?php foreach ($locations as $location): ?>
-                                <button class="loc-btn <?php echo ($current_cookie === $location->slug) ? 'active' : ''; ?>"
-                                    data-slug="<?php echo esc_attr($location->slug); ?>">
+                            <form id="locationForm">
+                                <?php foreach ($locations as $location): ?>
+                                    
+                                    <label class="loc-radio">
+                                        <input 
+                                            type="radio" 
+                                            name="selected_location" 
+                                            value="<?php echo esc_attr($location->slug); ?>"
+                                            <?php checked($current_cookie, $location->slug); ?>
+                                        />
+                                        
+                                        <span><?php echo esc_html($location->name); ?></span>
+                                    </label>
 
-                                    <?php echo esc_html($location->name); ?>
-                                </button>
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            </form>
                         <?php endif; ?>
-                    </div>
+                       </div>
 
                     <div class="top-right">
                         <ul>
