@@ -408,3 +408,16 @@
     opacity 0.6s ease,
     transform 0.6s ease;
 }
+.loc-btn{
+  background-color: var(--primary-blue);
+    color: var(--cream);
+    border-radius: 7px;
+    padding: 7px 15px;
+    font-size: 16px;
+    line-height: 1.1;
+    font-weight: 600;
+}
+
+.loc-btn:hover {
+    background-color: #000;
+}

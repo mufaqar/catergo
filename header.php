@@ -7,19 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <?php if (is_search()) { ?>
-    <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content="noindex, nofollow" />
     <?php } ?>
     <title>
         <?php
-				global $page, $paged, $post;			
-				wp_title( '|', true, 'right' );
-				bloginfo( 'name' );
-				$site_description = get_bloginfo( 'description', 'display' );
-				if ( $site_description && ( is_home() || is_front_page() ) )
-					echo " | $site_description";
-				if ( $paged >= 2 || $page >= 2 )
-					echo ' | ' . sprintf( __( 'Page %s', 'wpv' ), max( $paged, $page ) );
-            ?>
+        global $page, $paged, $post;
+        wp_title('|', true, 'right');
+        bloginfo('name');
+        $site_description = get_bloginfo('description', 'display');
+        if ($site_description && (is_home() || is_front_page()))
+            echo " | $site_description";
+        if ($paged >= 2 || $page >= 2)
+            echo ' | ' . sprintf(__('Page %s', 'wpv'), max($paged, $page));
+        ?>
     </title>
     <link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/favicon.ico" />
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/bootstrap.min.css">
@@ -33,11 +33,12 @@
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" />
 
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-    <?php if ( is_singular() ) wp_enqueue_script('comment-reply'); ?>
+    <?php if (is_singular())
+        wp_enqueue_script('comment-reply'); ?>
     <?php wp_head(); ?>
     <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 
 
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/custom.css">
@@ -101,7 +102,11 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-top-wrapper">
-                     <div class="top-left">08-640 244 00</div>
+                    <div class="top-left">
+                        <ul>
+                            <li><a href="tel:0864024400" target="_blank">08-640 244 00</a></li>
+                        </ul>
+                    </div>
                     <?php
                     $locations = get_terms([
                         'taxonomy' => 'location',
@@ -110,22 +115,20 @@
                     $current_cookie = $_COOKIE['selected_location'] ?? '';
                     ?>
 
-                    <div class="top-center">
-                        <select id="location-selector">
-                            <option value="">Select Location</option>
-                            <?php if (!empty($locations) && !is_wp_error($locations)) : ?>
-                            <?php foreach ($locations as $location) : ?>
-                            <option value="<?php echo esc_attr($location->slug); ?>"
-                                <?php selected($current_cookie, $location->slug); ?>>
-                                <?php echo esc_html($location->name); ?>
-                            </option>
+                    <div class="top-center loc_btns">
+                        <?php if (!empty($locations) && !is_wp_error($locations)): ?>
+                            <?php foreach ($locations as $location): ?>
+                                <button class="loc-btn <?php echo ($current_cookie === $location->slug) ? 'active' : ''; ?>"
+                                    data-slug="<?php echo esc_attr($location->slug); ?>">
+
+                                    <?php echo esc_html($location->name); ?>
+                                </button>
                             <?php endforeach; ?>
-                            <?php endif; ?>
-                        </select>
+                        <?php endif; ?>
                     </div>
 
                     <div class="top-right">
-                        <ul>                        
+                        <ul>
                             <li><a href="<?php echo home_url('/bli-leverantor'); ?>">Bli Leverantör</a></li>
                         </ul>
                     </div>
@@ -147,13 +150,13 @@
                                 <div class="main-menu">
                                     <nav id="mobile-menu">
                                         <?php
-                                        wp_nav_menu( array(
+                                        wp_nav_menu(array(
                                             'theme_location' => 'main', // Matches the registered location
-                                            'menu_id'        => 'mobile-menu', // Optional: matches your ID
-                                            'container'      => false, // No extra container div
-                                            'walker'         => new Custom_Menu_Walker(), // Use the custom walker
-                                            'fallback_cb'    => false, // Optional: hide if no menu assigned
-                                        ) );
+                                            'menu_id' => 'mobile-menu', // Optional: matches your ID
+                                            'container' => false, // No extra container div
+                                            'walker' => new Custom_Menu_Walker(), // Use the custom walker
+                                            'fallback_cb' => false, // Optional: hide if no menu assigned
+                                        ));
                                         ?>
                                     </nav>
                                     <!-- for wp -->
@@ -163,7 +166,8 @@
                         <div class="header-right d-flex justify-content-end align-items-center">
                             <?php get_template_part('partials/cart', 'widget'); ?>
                             <div class="header-button">
-                                <a href="<?php echo home_url('/begar-offert'); ?>" class="theme-btn bg-red-2">BEGÄR OFFERT</a>
+                                <a href="<?php echo home_url('/begar-offert'); ?>" class="theme-btn bg-red-2">BEGÄR
+                                    OFFERT</a>
                             </div>
                             <div class="header__hamburger d-xl-block my-auto">
                                 <div class="sidebar__toggle">
