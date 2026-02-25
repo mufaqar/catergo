@@ -445,3 +445,7 @@
 .loc-btn:hover {
   background-color: #000;
 }
+.loc-btn.active {
+    background: #000;
+    color: #fff;
+}
