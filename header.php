@@ -119,18 +119,15 @@
                         <?php if (!empty($locations) && !is_wp_error($locations)): ?>
                             <form id="locationForm">
                                 <?php foreach ($locations as $location): ?>
-                                    
                                     <label class="loc-radio">
                                         <input 
                                             type="radio" 
                                             name="selected_location" 
                                             value="<?php echo esc_attr($location->slug); ?>"
-                                            <?php checked($current_cookie, $location->slug); ?>
-                                        />
+                                            <?php checked($current_cookie, $location->slug); ?> />
                                         
                                         <span><?php echo esc_html($location->name); ?></span>
                                     </label>
-
                                 <?php endforeach; ?>
                             </form>
                         <?php endif; ?>

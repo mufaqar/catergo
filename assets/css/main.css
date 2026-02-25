@@ -135,9 +135,9 @@ Version: 2.0.0
 }
 
 .theme-btn.bg-red-2 {
-  background-color: var(--theme2);
+  background-color: #6a32cc;
   color: var(--white);
-  border-radius: 7px;
+  border-radius: 50px;
 }
 
 .theme-btn.bg-red-2:hover {
