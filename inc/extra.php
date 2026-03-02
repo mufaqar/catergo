@@ -77,3 +77,23 @@ add_filter('wp_nav_menu_items', function ($items, $args) {
     return $new_item . $items;
 
 }, 10, 2);
+
+
+
+function get_home_url_with_location() {
+
+    // Get location from query var
+    $location = get_query_var('location');
+
+    // Fallback to cookie
+    if (!$location && !empty($_COOKIE['selected_location'])) {
+        $location = sanitize_text_field($_COOKIE['selected_location']);
+    }
+
+    if ($location) {
+        $location = sanitize_title($location); // makes it URL safe
+        return esc_url( home_url('/' . $location . '/') );
+    }
+
+    return esc_url( home_url('/') );
+}

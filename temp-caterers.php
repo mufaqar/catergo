@@ -20,7 +20,63 @@ get_template_part('partials/content', 'breadcrumb', [
             <!-- Sidebar -->
             <div class="col-xl-3 col-lg-4 order-1 order-md-1 mt-5">
                 <div class="main-sidebar">
-                    <!-- WooCommerce Categories -->
+
+
+
+                    <div class="single-sidebar-widget">
+                        <div class="wid-title">
+                            <h4>Types</h4>
+                        </div>
+                        <div class="widget-categories">
+                            <?php
+                            $categories = get_terms([
+                                'taxonomy' => 'caterer_types',
+                                'hide_empty' => true,
+                                'orderby' => 'name',
+                                'order' => 'ASC'
+                            ]);
+
+                            if ($categories && !is_wp_error($categories)) {
+                                echo '<ul>';
+                                foreach ($categories as $category) {
+                                    $icon_class = 'flaticon-burger'; // Default icon
+                                    switch (strtolower($category->name)) {
+                                        case 'burger':
+                                            $icon_class = 'flaticon-burger';
+                                            break;
+                                        case 'chicken':
+                                            $icon_class = 'flaticon-chicken';
+                                            break;
+                                        case 'pizza':
+                                            $icon_class = 'flaticon-pizza';
+                                            break;
+                                        case 'fries':
+                                            $icon_class = 'flaticon-french-fries';
+                                            break;
+                                        case 'sandwich':
+                                            $icon_class = 'flaticon-sandwich';
+                                            break;
+                                        case 'bread':
+                                            $icon_class = 'flaticon-bread';
+                                            break;
+                                        case 'rice':
+                                            $icon_class = 'flaticon-rice';
+                                            break;
+                                        case 'hotdog':
+                                            $icon_class = 'flaticon-hotdog';
+                                            break;
+                                    }
+                                    echo '<li><a href="' . esc_url(get_term_link($category)) . '"><i class="' . esc_attr($icon_class) . '"></i> ' . esc_html($category->name) . '</a></li>';
+                                }
+                                echo '</ul>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    
+
+
+
                     <div class="single-sidebar-widget">
                         <div class="wid-title">
                             <h4>Categories</h4>
@@ -71,86 +127,59 @@ get_template_part('partials/content', 'breadcrumb', [
                             ?>
                         </div>
                     </div>
-                    <!-- Price Filter -->
                     <div class="single-sidebar-widget">
                         <div class="wid-title">
-                            <h4>Price Filter</h4>
+                            <h4>Tags</h4>
                         </div>
-                        <div class="range__barcustom">
-                            <form method="GET" action="<?php echo esc_url(get_permalink()); ?>">
-                                <div class="range-items">
-                                    <div class="price-input d-flex">
-                                        <div class="field"><span>Price:</span></div>
-                                        <div class="field">
-                                            <span>$</span>
-                                            <input type="number" name="min_price"
-                                                value="<?php echo esc_attr($_GET['min_price'] ?? '0'); ?>">
-                                        </div>
-                                        <div class="separators">-</div>
-                                        <div class="field">
-                                            <span>$</span>
-                                            <input type="number" name="max_price"
-                                                value="<?php echo esc_attr($_GET['max_price'] ?? '1000'); ?>">
-                                        </div>
-                                        <button type="submit" class="theme-btn border-radius-none">Filter</button>
-
-                                        <?php if (isset($_GET['product_cat'])): ?>
-                                            <input type="hidden" name="product_cat"
-                                                value="<?php echo esc_attr($_GET['product_cat']); ?>">
-                                        <?php endif; ?>
-                                        <?php if (isset($_GET['orderby'])): ?>
-                                            <input type="hidden" name="orderby"
-                                                value="<?php echo esc_attr($_GET['orderby']); ?>">
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- New Arrivals -->
-                    <div class="single-sidebar-widget">
-                        <div class="wid-title">
-                            <h4>New Arrivals</h4>
-                        </div>
-                        <div class="popular-food-posts">
+                        <div class="widget-categories">
                             <?php
-                            $new_arrivals = new WP_Query([
-                                'post_type' => 'product',
-                                'posts_per_page' => 4,
-                                'orderby' => 'date',
-                                'order' => 'DESC',
-                                'meta_query' => [
-                                    [
-                                        'key' => '_stock_status',
-                                        'value' => 'instock',
-                                        'compare' => '='
-                                    ]
-                                ]
+                            $categories = get_terms([
+                                'taxonomy' => 'product_tag',
+                                'hide_empty' => true,
+                                'orderby' => 'name',
+                                'order' => 'ASC'
                             ]);
 
-                            if ($new_arrivals->have_posts()):
-                                while ($new_arrivals->have_posts()):
-                                    $new_arrivals->the_post();
-                                    $product = wc_get_product(get_the_ID());
-                                    ?>
-                                    <div class="single-post-item">
-                                        <div class="thumb bg-cover"
-                                            style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>');">
-                                        </div>
-                                        <div class="post-content">
-                                            <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                                            <div class="post-price">
-                                                <?php echo $product->get_price_html(); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endwhile;
-                                wp_reset_postdata();
-                            endif;
+                            if ($categories && !is_wp_error($categories)) {
+                                echo '<ul>';
+                                foreach ($categories as $category) {
+                                    $icon_class = 'flaticon-burger'; // Default icon
+                                    switch (strtolower($category->name)) {
+                                        case 'burger':
+                                            $icon_class = 'flaticon-burger';
+                                            break;
+                                        case 'chicken':
+                                            $icon_class = 'flaticon-chicken';
+                                            break;
+                                        case 'pizza':
+                                            $icon_class = 'flaticon-pizza';
+                                            break;
+                                        case 'fries':
+                                            $icon_class = 'flaticon-french-fries';
+                                            break;
+                                        case 'sandwich':
+                                            $icon_class = 'flaticon-sandwich';
+                                            break;
+                                        case 'bread':
+                                            $icon_class = 'flaticon-bread';
+                                            break;
+                                        case 'rice':
+                                            $icon_class = 'flaticon-rice';
+                                            break;
+                                        case 'hotdog':
+                                            $icon_class = 'flaticon-hotdog';
+                                            break;
+                                    }
+                                    echo '<li><a href="' . esc_url(get_term_link($category)) . '"><i class="' . esc_attr($icon_class) . '"></i> ' . esc_html($category->name) . '</a></li>';
+                                }
+                                echo '</ul>';
+                            }
                             ?>
                         </div>
                     </div>
+                    
+                   
+                   
                 </div>
             </div>
 

@@ -4,6 +4,8 @@ $term = get_queried_object();
 $term_title = $term->post_title;
 $term_slug = $term->post_name;
 
+$base_url = get_home_url_with_location();
+
 
 // echo $term_slug;
 
@@ -167,7 +169,7 @@ $term_slug = $term->post_name;
                         <h3 class="font-display h4 text-deep mb-2">Food Trucks</h3>
                         <p class="text-muted mb-3">Över 50 food trucks med allt från gourmetburgare till vegansk
                             streetfood</p>
-                        <a class="fw-semibold text-accent text-decoration-none" href="#">Boka food truck →</a>
+                        <a class="fw-semibold text-accent text-decoration-none" href="<?php echo $base_url; ?>/boka-food-truck/">Boka food truck →</a>
                     </div>
                 </div>
             </div>
@@ -180,7 +182,7 @@ $term_slug = $term->post_name;
                     <div class="card-body p-4">
                         <h3 class="font-display h4 text-deep mb-2">Företagscatering</h3>
                         <p class="text-muted mb-3">Daglig lunch, möten och konferenser – mat för alla företagsbehov</p>
-                        <a class="fw-semibold text-accent text-decoration-none" href="#">Se företagslösningar →</a>
+                        <a class="fw-semibold text-accent text-decoration-none" href="<?php echo $base_url; ?>/foretagscatering/">Se företagslösningar →</a>
                     </div>
                 </div>
             </div>
