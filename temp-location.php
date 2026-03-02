@@ -113,15 +113,15 @@ $base_url = get_home_url_with_location();
 
                     <div class="row mt-4 g-4 text-center text-lg-start">
                         <div class="col-4">
-                            <div class="font-display fw-bold fs-2 text-primary">200+</div>
+                            <div class="font-display fw-bold fs-2 text-primary">20+</div>
                             <div class="small text-muted">Leverantörer</div>
                         </div>
                         <div class="col-4">
-                            <div class="font-display fw-bold fs-2 text-primary">5000+</div>
+                            <div class="font-display fw-bold fs-2 text-primary">100+</div>
                             <div class="small text-muted">Nöjda Kunder</div>
                         </div>
                         <div class="col-4">
-                            <div class="font-display fw-bold fs-2 text-primary">4.8★</div>
+                            <div class="font-display fw-bold fs-2 text-primary">5★</div>
                             <div class="small text-muted">Genomsnittligt Betyg</div>
                         </div>
                     </div>
