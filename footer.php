@@ -157,16 +157,27 @@
 
  <?php wp_footer(); ?>
 <script>
-document.getElementById('location-selector').addEventListener('change', function() {
-    var selectedLocation = this.value;
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('locationForm');
+  if (!form) return;
 
-    if(selectedLocation) {
-        document.cookie = "selected_location=" + selectedLocation + "; path=/; max-age=" + (30*24*60*60);
-        window.location.href = "<?php echo home_url('/'); ?>" + selectedLocation;
+  form.addEventListener('change', function (e) {
+    const input = e.target;
+    if (!input || input.name !== 'selected_location') return;
+
+    const selectedLocation = input.value;
+
+    if (selectedLocation) {
+      document.cookie =
+        "selected_location=" + encodeURIComponent(selectedLocation) +
+        "; path=/; max-age=" + (30*24*60*60);
+
+      // same redirect behavior as before:
+      window.location.href = "<?php echo esc_url(home_url('/')); ?>" + selectedLocation;
     }
+  });
 });
 </script>
-
 
  <script>
 jQuery(document).ready(function($) {

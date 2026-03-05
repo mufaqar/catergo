@@ -107,30 +107,30 @@
                             <li><a href="tel:0864024400" target="_blank">08-640 244 00</a></li>
                         </ul>
                     </div>
-                    <?php
-                    $locations = get_terms([
-                        'taxonomy' => 'location',
-                        'hide_empty' => false,
-                    ]);
-                    $current_cookie = $_COOKIE['selected_location'] ?? '';
-                    ?>
+                        <?php
+                        $locations = get_terms([
+                            'taxonomy' => 'location',
+                            'hide_empty' => false,
+                        ]);
+                        $current_cookie = $_COOKIE['selected_location'] ?? '';
+                        ?>
 
-                   <div class="top-center loc_div">
-                        <?php if (!empty($locations) && !is_wp_error($locations)): ?>
-                            <form id="locationForm">
-                                <?php foreach ($locations as $location): ?>
-                                    <label class="loc-radio">
-                                        <input 
-                                            type="radio" 
-                                            name="selected_location" 
-                                            value="<?php echo esc_attr($location->slug); ?>"
-                                            <?php checked($current_cookie, $location->slug); ?> />
-                                        
-                                        <span><?php echo esc_html($location->name); ?></span>
-                                    </label>
-                                <?php endforeach; ?>
-                            </form>
-                        <?php endif; ?>
+                        <div class="top-center loc_div">
+                            <?php if (!empty($locations) && !is_wp_error($locations)): ?>
+                                <form id="locationForm">
+                                    <?php foreach ($locations as $location): ?>
+                                        <label class="loc-radio">
+                                            <input 
+                                                type="radio" 
+                                                name="selected_location" 
+                                                value="<?php echo esc_attr($location->slug); ?>"
+                                                <?php checked($current_cookie, $location->slug); ?> />
+                                            
+                                            <span><?php echo esc_html($location->name); ?></span>
+                                        </label>
+                                    <?php endforeach; ?>
+                                </form>
+                            <?php endif; ?>
                        </div>
 
                     <div class="top-right">

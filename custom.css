@@ -433,10 +433,10 @@
 }
 
 .loc_div #locationForm {
-  background-color: #fbfbfb;
+  background-color: #FFF;
   display: flex;
   align-items: center;
-  padding: 6px;
+  padding: 4px;
   border-radius: 50px;
 }
 
@@ -445,14 +445,16 @@
 }
 
 .loc-radio span {
-  display: inline-block;
-  padding: 5px 40px;
-  border-radius: 50px;
-  background: transparent;
-  transition: 0.3s;
-  color: #000;
-  font-size: 18px;
-  font-weight: 500;
+     display: inline-block;
+    padding: 5px 25px 6px;
+    border-radius: 50px;
+    background: transparent;
+    transition: 0.3s;
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: 1.2;
 }
 
 .loc-radio input:checked+span {

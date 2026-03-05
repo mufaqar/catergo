@@ -92,7 +92,7 @@ function get_home_url_with_location() {
 
     if ($location) {
         $location = sanitize_title($location); // makes it URL safe
-        return esc_url( home_url('/' . $location . '/') );
+        return esc_url( home_url('/' . $location ) );
     }
 
     return esc_url( home_url('/') );
