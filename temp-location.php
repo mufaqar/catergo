@@ -196,7 +196,7 @@ $base_url = get_home_url_with_location();
                         <h3 class="font-display h4 text-deep mb-2">Event &amp; Fest</h3>
                         <p class="text-muted mb-3">Bröllop, firmafester och privata tillställningar – gör ditt event
                             minnesvärt</p>
-                        <a class="fw-semibold text-accent text-decoration-none" href="#">Boka event catering →</a>
+                        <a class="fw-semibold text-accent text-decoration-none" href="<?php echo $base_url; ?>/boka-event-catering">Boka event catering →</a>
                     </div>
                 </div>
             </div>
@@ -210,7 +210,7 @@ $base_url = get_home_url_with_location();
                         <h3 class="font-display h4 text-deep mb-2">Lunch Catering</h3>
                         <p class="text-muted mb-3">Fräsch och mättande lunch för kontor och arbetsplatser, levererad i
                             tid</p>
-                        <a class="fw-semibold text-accent text-decoration-none" href="#">Beställ lunch →</a>
+                        <a class="fw-semibold text-accent text-decoration-none" href="<?php echo $base_url; ?>/catering">Beställ lunch →</a>
                     </div>
                 </div>
             </div>
