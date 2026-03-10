@@ -25,7 +25,7 @@ get_template_part('partials/content', 'breadcrumb', [
 
                     <div class="single-sidebar-widget">
                         <div class="wid-title">
-                            <h4>Types 123</h4>
+                            <h4>Types</h4>
                         </div>
                         <div class="widget-categories">
                             <?php
@@ -38,7 +38,7 @@ get_template_part('partials/content', 'breadcrumb', [
 
                             if ($categories && !is_wp_error($categories)) {
                                 echo '<ul>';
-                                echo '<li><a href="#" class="caterer-type-filter active" data-term-id="">All</a></li>';
+                                echo '<li><a href="#" class="caterer-type-filter active" data-term-id=""><i class="flaticon-burger"></i>  All</a></li>';
                                 foreach ($categories as $category) {
                                     $icon_class = 'flaticon-burger'; // Default icon
                                     switch (strtolower($category->name)) {
